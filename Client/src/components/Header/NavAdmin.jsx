@@ -79,7 +79,6 @@ const NavAdmin = () => {
       "/missionPost": <Target className="w-5 h-5" />,
       "/listeContacts": <Mail className="w-5 h-5" />,
       "/listePostulantsCommunity": <UserPlus className="w-5 h-5" />,
-      "/listeAbonnement": <Users className="w-5 h-5" />,
       "/servicePost": <Package className="w-5 h-5" />,
       "/portfolioPost": <Briefcase className="w-5 h-5" />,
       "/newsPost": <Briefcase className="w-5 h-5" />,
@@ -125,7 +124,6 @@ const NavAdmin = () => {
       color: "#fec603",
       items: [
         { path: "/listeContacts", label: "Messages", count: counts.contacts },
-        { path: "/listeAbonnement", label: "Abonnements", count: counts.newsletter }
       ]
     }
   ];
