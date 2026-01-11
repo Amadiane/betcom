@@ -707,8 +707,47 @@
     "contact_us": "Nous Contacter",
     "join_us": "Rejoindre le Club"
   },
-
   
+  
+  "footer": {
+    "tagline": "Architecture, Ingénierie & Innovation - Façonnons l'avenir ensemble",
+    "stats": {
+      "founded": "Fondation",
+      "projects": "Projets",
+      "team": "Équipe"
+    },
+    "services": {
+      "architecture": "Architecture",
+      "engineering": "Ingénierie",
+      "urban": "Urbanisme",
+      "consulting": "Conseil"
+    },
+    "links": {
+      "home": "Accueil",
+      "about": "À propos",
+      "team": "Notre équipe",
+      "projects": "Projets",
+      "news": "Actualités",
+      "contact": "Contact"
+    },
+    "sections": {
+      "services": "Services",
+      "navigation": "Navigation",
+      "company": "Entreprise",
+      "social": "Suivez-nous",
+      "contact": "Contact"
+    },
+    "legal": {
+      "terms": "Mentions légales",
+      "privacy": "Confidentialité",
+      "cgv": "CGV"
+    },
+    "copyright": "Tous droits réservés",
+    "toast": {
+      "success": "Succès",
+      "error": "Erreur"
+    }
+  },
   "president": {
     "loading": "Chargement du message du président...",
     "error": "Une erreur est survenue",

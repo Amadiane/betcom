@@ -692,6 +692,46 @@
   },
 
   
+  
+  "footer": {
+    "tagline": "Architecture, Engineering & Innovation - Shaping the future together",
+    "stats": {
+      "founded": "Founded",
+      "projects": "Projects",
+      "team": "Team"
+    },
+    "services": {
+      "architecture": "Architecture",
+      "engineering": "Engineering",
+      "urban": "Urban Planning",
+      "consulting": "Consulting"
+    },
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "team": "Our team",
+      "projects": "Projects",
+      "news": "News",
+      "contact": "Contact"
+    },
+    "sections": {
+      "services": "Services",
+      "navigation": "Navigation",
+      "company": "Company",
+      "social": "Follow us",
+      "contact": "Contact"
+    },
+    "legal": {
+      "terms": "Legal notice",
+      "privacy": "Privacy",
+      "cgv": "Terms"
+    },
+    "copyright": "All rights reserved",
+    "toast": {
+      "success": "Success",
+      "error": "Error"
+    }
+  },
   "missions": {
     "loading": "Loading",
     "title": "ABOUT US",
