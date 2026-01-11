@@ -420,29 +420,30 @@
 
   
   "nav": {
-    "news": "Actualités",
-    "Viali": "A propos",
-    "president_word": "Mot du Président",
-    "missions": "Mission",
-    "team": "Équipe",
-    "calendrier": "Calendrier",
-    "medias": "Médias",
-    "photos": "Photothèque",
-    "videos": "Vidéothèque",
-    "partenaires": "Partenaires",
-    "join_us": "Nous Rejoindre",
-    "contact": "Nous Contacter",
-    "community": "Communauté",
-    "home": "Acceuil",
-    "viali_presentation": "Présentation de Viali",
-    "slogan": "TEKACOM a remplir",
-    "values":"Nos Valeurs",
-    "product":"Produits",
-    "sardine":"Sardine",
-    "tuna":"Thon",
-    "recipes":"Recettes",
-    "profesionnalarea":"Espace Professionnel"
-  }, 
+  "news": "News",
+  "about": "About",
+  "expertise": "Expertise",
+  "projects": "Projects",
+  "team": "Team",
+  "calendrier": "Calendar",
+  "medias": "Media",
+  "photos": "Photo Gallery",
+  "videos": "Video Library",
+  "partenaires": "Partners",
+  "join_us": "Join Us",
+  "contact": "Contact",
+  "contactUs": "Contact Us",
+  "home": "Home",
+  "viali_presentation": "Viali Presentation",
+  "slogan": "TEKACOM to be filled",
+  "values": "Our Values",
+  "product": "Products",
+  "sardine": "Sardine",
+  "tuna": "Tuna",
+  "recipes": "Recipes",
+  "profesionnalarea": "Professional Area"
+},
+
 
   
   "recipes": {

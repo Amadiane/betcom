@@ -72,7 +72,7 @@ const Navlinks = () => {
     { title: t('nav.team'), path: "/notreEquipe", icon: Users },
     { title: t('nav.news'), path: "/actualites", icon: Newspaper },
     // { title: t('nav.careers'), path: "/careers", icon: Briefcase },
-    { title: t('nav.contact'), path: "/contact", icon: Mail },
+    // { title: t('nav.contact'), path: "/contact", icon: Mail },
   ];
 
   return (
