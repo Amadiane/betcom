@@ -146,11 +146,11 @@ const Actualites = () => {
               <span className="text-black font-bold text-3xl md:text-4xl">{newsList.length}</span>
               <span className="text-gray-400 ml-3">{t("news.totalArticles")}</span>
             </div>
-            <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
-            <div>
+            {/* <div className="w-px h-8 bg-gray-300 hidden sm:block"></div> */}
+            {/* <div>
               <span className="text-black font-bold text-3xl md:text-4xl">{totalPages}</span>
               <span className="text-gray-400 ml-3">{t("news.pages")}</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

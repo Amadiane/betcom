@@ -68,7 +68,7 @@ const Navlinks = () => {
     { title: t('nav.home'), path: "/", icon: Building2 },
     { title: t('nav.about'), path: "/nosMissions", icon: Users },
     { title: t('nav.expertise'), path: "/services", icon: Layers },
-    { title: t('nav.projects'), path: "/projects", icon: Building2 },
+    { title: t('nav.projects'), path: "/portfolio", icon: Building2 },
     { title: t('nav.team'), path: "/notreEquipe", icon: Users },
     { title: t('nav.news'), path: "/actualites", icon: Newspaper },
     // { title: t('nav.careers'), path: "/careers", icon: Briefcase },

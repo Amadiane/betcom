@@ -493,7 +493,7 @@
   "nav": {
   "news": "News",
   "about": "About",
-  "expertise": "Expertise",
+  "expertise": "Expertises",
   "projects": "Projects",
   "team": "Team",
   "calendrier": "Calendar",
@@ -561,8 +561,8 @@
       "title": "Our Team",
       "description": "Discover the members who make the heart of BETCOM beat."
     },
-    "title": "THE TEAM",
-    "subtitle": "The architects and engineers shaping the future of BETCOM AI",
+    "title": "TEAM",
+    "subtitle": "The architects and engineers shaping the future of BETCOM",
     "stats": {
       "members": "Members",
       "leaders": "Leaders",

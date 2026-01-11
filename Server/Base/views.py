@@ -123,3 +123,17 @@ from .serializers import NewsSerializer
 class NewsViewSet(viewsets.ModelViewSet):
     queryset = News.objects.all().order_by('-created_at')
     serializer_class = NewsSerializer
+
+
+
+# Base/views.py
+
+from rest_framework import viewsets
+from rest_framework.parsers import MultiPartParser, FormParser
+from .models import Portfolio
+from .serializers import PortfolioSerializer
+
+class PortfolioViewSet(viewsets.ModelViewSet):
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
+    parser_classes = [MultiPartParser, FormParser]  # <- IMPORTANT pour recevoir les fichiers

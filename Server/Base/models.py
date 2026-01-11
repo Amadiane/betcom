@@ -216,3 +216,61 @@ class News(models.Model):
     def display_title(self):
         lang = translation.get_language() or "en"
         return self.title_fr if lang.startswith("fr") else self.title_en or self.title_fr
+
+
+
+from django.db import models
+from cloudinary.models import CloudinaryField
+from django.utils import timezone
+
+class Portfolio(models.Model):
+    # =========================
+    # TITRE & DESCRIPTION
+    # =========================
+    title_fr = models.CharField(max_length=255, verbose_name="Titre (FR)")
+    title_en = models.CharField(max_length=255, blank=True, null=True, verbose_name="Title (EN)")
+
+    description_fr = models.TextField(blank=True, verbose_name="Description (FR)")
+    description_en = models.TextField(blank=True, null=True, verbose_name="Description (EN)")
+
+    # =========================
+    # IMAGE PRINCIPALE
+    # =========================
+    cover_photo = CloudinaryField('Cover Photo', folder='portfolio/cover', blank=True, null=True)
+
+    # =========================
+    # IMAGES SUPPLÉMENTAIRES (FACULTATIVES)
+    # =========================
+    image_1 = CloudinaryField('Image 1', folder='portfolio/images', blank=True, null=True)
+    image_2 = CloudinaryField('Image 2', folder='portfolio/images', blank=True, null=True)
+    image_3 = CloudinaryField('Image 3', folder='portfolio/images', blank=True, null=True)
+    image_4 = CloudinaryField('Image 4', folder='portfolio/images', blank=True, null=True)
+    image_5 = CloudinaryField('Image 5', folder='portfolio/images', blank=True, null=True)
+    image_6 = CloudinaryField('Image 6', folder='portfolio/images', blank=True, null=True)
+    image_7 = CloudinaryField('Image 7', folder='portfolio/images', blank=True, null=True)
+    image_8 = CloudinaryField('Image 8', folder='portfolio/images', blank=True, null=True)
+    image_9 = CloudinaryField('Image 9', folder='portfolio/images', blank=True, null=True)
+    image_10 = CloudinaryField('Image 10', folder='portfolio/images', blank=True, null=True)
+    image_11 = CloudinaryField('Image 11', folder='portfolio/images', blank=True, null=True)
+    image_12 = CloudinaryField('Image 12', folder='portfolio/images', blank=True, null=True)
+    image_13 = CloudinaryField('Image 13', folder='portfolio/images', blank=True, null=True)
+    image_14 = CloudinaryField('Image 14', folder='portfolio/images', blank=True, null=True)
+    image_15 = CloudinaryField('Image 15', folder='portfolio/images', blank=True, null=True)
+    image_16 = CloudinaryField('Image 16', folder='portfolio/images', blank=True, null=True)
+    image_17 = CloudinaryField('Image 17', folder='portfolio/images', blank=True, null=True)
+    image_18 = CloudinaryField('Image 18', folder='portfolio/images', blank=True, null=True)
+    image_19 = CloudinaryField('Image 19', folder='portfolio/images', blank=True, null=True)
+    image_20 = CloudinaryField('Image 20', folder='portfolio/images', blank=True, null=True)
+
+    # =========================
+    # META
+    # =========================
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.ti

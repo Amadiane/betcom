@@ -96,3 +96,42 @@ class NewsSerializer(serializers.ModelSerializer):
     def display_title(self):
         lang = self.context.get('request').LANGUAGE_CODE if self.context.get('request') else 'en'
         return self.title_fr if lang.startswith('fr') else self.title_en or self.title_fr
+
+
+
+from rest_framework import serializers
+from .models import Portfolio
+
+class PortfolioSerializer(serializers.ModelSerializer):
+    # Retourne l'URL de l'image Cloudinary au lieu de l'objet
+    cover_photo = serializers.SerializerMethodField()
+    
+    # Pour toutes les images facultatives, tu peux faire pareil
+    image_1 = serializers.SerializerMethodField()
+    image_2 = serializers.SerializerMethodField()
+    # ... jusqu'à image_20 si besoin
+
+    class Meta:
+        model = Portfolio
+        fields = "__all__"
+
+    # Méthodes pour renvoyer l'URL si l'image existe
+    def get_cover_photo(self, obj):
+        if obj.cover_photo:
+            return obj.cover_photo.url
+        return None
+
+    def get_image_1(self, obj):
+        if obj.image_1:
+            return obj.image_1.url
+        return None
+
+    def get_image_2(self, obj):
+        if obj.image_2:
+            return obj.image_2.url
+        return None
+
+    # ... idem pour image_3 à image_20
+
+    # Les CloudinaryFields peuvent être uploadés directement en tant que fichiers
+

@@ -16,6 +16,13 @@ const CONFIG = {
   API_ABOUT_DELETE: (id) => `${BASE_URL}/api/about/${id}/`,
 
 
+    // =======================
+  API_PORTFOLIO_LIST: `${BASE_URL}/api/portfolio/`,
+  API_PORTFOLIO_CREATE: `${BASE_URL}/api/portfolio/`,
+  API_PORTFOLIO_UPDATE: (id) => `${BASE_URL}/api/portfolio/${id}/`,
+  API_PORTFOLIO_DELETE: (id) => `${BASE_URL}/api/portfolio/${id}/`,
+
+
   
   // 👥 TEAM
   API_TEAM_LIST: `${BASE_URL}/api/equipe-members/`,
