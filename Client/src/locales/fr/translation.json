@@ -420,30 +420,29 @@
 
   
   "nav": {
-  "news": "News",
-  "about": "About",
-  "expertise": "Expertise",
-  "projects": "Projects",
-  "team": "Team",
-  "calendrier": "Calendar",
-  "medias": "Media",
-  "photos": "Photo Gallery",
-  "videos": "Video Library",
-  "partenaires": "Partners",
-  "join_us": "Join Us",
-  "contact": "Contact",
-  "contactUs": "Contact Us",
-  "home": "Home",
-  "viali_presentation": "Viali Presentation",
-  "slogan": "TEKACOM to be filled",
-  "values": "Our Values",
-  "product": "Products",
-  "sardine": "Sardine",
-  "tuna": "Tuna",
-  "recipes": "Recipes",
-  "profesionnalarea": "Professional Area"
-},
-
+    "news": "Actualités",
+    "about": "A propos",
+    "expertise": "Expertises",
+    "projects": "Projets",
+    "team": "Équipe",
+    "calendrier": "Calendrier",
+    "medias": "Médias",
+    "photos": "Photothèque",
+    "videos": "Vidéothèque",
+    "partenaires": "Partenaires",
+    "join_us": "Nous Rejoindre",
+    "contact": "Contact",
+    "contactUs": "Contact",
+    "home": "Acceuil",
+    "viali_presentation": "Présentation de Viali",
+    "slogan": "TEKACOM a remplir",
+    "values":"Nos Valeurs",
+    "product":"Produits",
+    "sardine":"Sardine",
+    "tuna":"Thon",
+    "recipes":"Recettes",
+    "profesionnalarea":"Espace Professionnel"
+  }, 
 
   
   "recipes": {
@@ -504,7 +503,7 @@
       "description": "Découvrez les membres qui font battre le cœur du club."
     },
     "title": "L'ÉQUIPE",
-    "subtitle": "Les architectes et ingénieurs qui façonnent l'avenir de BETCOM AI",
+    "subtitle": "Les architectes et ingénieurs qui façonnent l'avenir de BETCOM",
     "stats": {
       "members": "Membres",
       "leaders": "Dirigeants",
@@ -686,19 +685,25 @@
 },
 
 
+  
   "news": {
-    "title": "Actualités",
-    "subtitle": "Découvrez nos dernières actualités et mises à jour",
+    "badge": "ACTUALITES",
+    "title": "ACTUALITES",
+    "subtitle": "Découvrez les dernières actualités, annonces et mises à jour importantes.",
     "loading": "Chargement des actualités...",
-    "errorTitle": "Erreur de chargement",
+    "errorTitle": "Une erreur est survenue",
     "retry": "Réessayer",
-    "noNews": "Aucune actualité",
-    "noNewsDesc": "Aucune actualité n'est disponible pour le moment.",
+    "totalArticles": "Articles",
+    "pages": "Pages",
+    "noNews": "Aucune actualité disponible",
+    "noNewsDesc": "Il n'y a aucune actualité disponible pour le moment.",
+    "featured": "À la une",
     "readMore": "Lire la suite",
-    "close": "Fermer",
-    "page": "Page",
     "previousPage": "Page précédente",
-    "nextPage": "Page suivante"
+    "nextPage": "Page suivante",
+    "page": "Page",
+    "close": "Fermer",
+    "backToNews": "Retour aux actualités"
   },
 
   "home": {
