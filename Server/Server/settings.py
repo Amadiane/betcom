@@ -34,9 +34,9 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-DEBUG = os.getenv("DEBUG", "True") == "True"
+DEBUG = True
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -99,6 +99,27 @@ CORS_ALLOW_HEADERS = [
     "authorization",
     "content-type",
     "x-csrftoken",
+]
+
+CORS_ALLOW_CREDENTIALS = True   # ← OBLIGATOIRE
+CORS_ALLOW_ALL_ORIGINS = False  # ← PAS DE TRUE ici sinon erreur
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://tekacom.gn", 
+    # "https://tekacom.onrender.com",
+    "https://betcom.vercel.app", # Frontend de dev
+    "https://www.tekacom.gn",
+
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://tekacom.gn",
+    # "https://tekacom.onrender.com",
+    "https://betcom.vercel.app",
+    "https://www.tekacom.gn",
 ]
 
 
