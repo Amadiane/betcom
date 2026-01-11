@@ -132,11 +132,14 @@ const NosMissions = () => {
                   {mission.historique_image_url && (
                     <div className="lg:col-span-5">
                       <div className="sticky top-32">
-                        <div className="aspect-[3/4] overflow-hidden">
+                        <div className="aspect-[3/4] overflow-hidden rounded-lg border border-gray-200">
                           <img
                             src={mission.historique_image_url}
                             alt={getLocalizedField(mission, 'historique_title')}
                             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                            loading="eager"
+                            decoding="async"
+                            style={{ imageRendering: 'crisp-edges' }}
                           />
                         </div>
                       </div>
@@ -229,11 +232,14 @@ const NosMissions = () => {
                   {mission.direction_image_url && (
                     <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
                       <div className="sticky top-32">
-                        <div className="aspect-[3/4] overflow-hidden">
+                        <div className="aspect-[3/4] overflow-hidden rounded-lg border border-gray-200">
                           <img
                             src={mission.direction_image_url}
                             alt={getLocalizedField(mission, 'direction_title')}
                             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            loading="eager"
+                            decoding="async"
+                            style={{ imageRendering: 'crisp-edges' }}
                           />
                         </div>
                       </div>
