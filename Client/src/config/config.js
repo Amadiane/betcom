@@ -33,6 +33,12 @@ API_SERVICE_DELETE: (id) => `${BASE_URL}/api/services/${id}/`,
 
 
 
+   // 📰 NEWS CRUD
+  API_NEWS_LIST: `${BASE_URL}/api/news/`,
+  API_NEWS_CREATE: `${BASE_URL}/api/news/`,
+  API_NEWS_UPDATE: (id) => `${BASE_URL}/api/news/${id}/`,
+  API_NEWS_DELETE: (id) => `${BASE_URL}/api/news/${id}/`,
+
   // Ajoute à ton CONFIG
 API_TRACK: `${BASE_URL}/api/track/`, // 🔹 endpoint Django pour tracker les actions
 

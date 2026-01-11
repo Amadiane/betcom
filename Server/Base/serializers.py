@@ -77,3 +77,22 @@ class ServiceSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at'
         ]
+
+
+from .models import News
+class NewsSerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField()
+    display_title = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = News
+        fields = "__all__"  # 👈 contient automatiquement is_active
+
+    def get_image_url(self, obj):
+        return obj.image.url if obj.image else None
+
+
+    @property
+    def display_title(self):
+        lang = self.context.get('request').LANGUAGE_CODE if self.context.get('request') else 'en'
+        return self.title_fr if lang.startswith('fr') else self.title_en or self.title_fr

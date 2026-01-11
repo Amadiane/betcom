@@ -82,6 +82,7 @@ const NavAdmin = () => {
       "/listeAbonnement": <Users className="w-5 h-5" />,
       "/servicePost": <Package className="w-5 h-5" />,
       "/portfolioPost": <Briefcase className="w-5 h-5" />,
+      "/newsPost": <Briefcase className="w-5 h-5" />,
     };
     return icons[path] || <FileText className="w-5 h-5" />;
   };
@@ -105,6 +106,7 @@ const NavAdmin = () => {
       title: "Agence",
       color: "#7828a8",
       items: [
+        { path: "/newsPost", label: "Actualites" },
         { path: "/partnerPost", label: "Partenaires" },
         { path: "/teamMessage", label: "Notre Équipe" },
         { path: "/missionPost", label: "Valeurs & Missions" }

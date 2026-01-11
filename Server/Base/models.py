@@ -138,3 +138,32 @@ class Service(models.Model):
         if lang.startswith('fr'):
             return self.title_fr or self.title_en or ""
         return self.title_en or self.title_fr or ""
+
+
+
+
+
+
+class News(models.Model):
+    title_fr = models.CharField(max_length=255, verbose_name="Titre (FR)")
+    title_en = models.CharField(max_length=255, verbose_name="Title (EN)", blank=True, null=True)
+
+    content_fr = models.TextField(verbose_name="Contenu (FR)")
+    content_en = models.TextField(verbose_name="Content (EN)", blank=True, null=True)
+
+    image = CloudinaryField('Image', folder='news', blank=True, null=True)
+
+    is_active = models.BooleanField(default=True)  # 👈 ajouté ici
+
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "News"
+        verbose_name_plural = "News"
+        ordering = ["-created_at"]
+
+    @property
+    def display_title(self):
+        lang = translation.get_language() or "en"
+        return self.title_fr if lang.startswith("fr") else self.title_en or self.title_fr
