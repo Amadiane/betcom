@@ -692,6 +692,79 @@
   },
 
   
+  "missions": {
+    "loading": "Loading",
+    "title": "ABOUT US",
+    "subtitle": "Architectural excellence and innovation at the heart of our DNA",
+    "stats": {
+      "sections": "Sections"
+    },
+    "empty": {
+      "title": "No missions available",
+      "subtitle": "Content will be available soon"
+    },
+    "sections": {
+      "history": "History",
+      "vision": "Vision & Mission",
+      "organization": "Organization",
+      "direction": "Message from Management"
+    },
+    "cta": {
+      "title": "One team, one culture, excellence",
+      "subtitle": "BETCOM AI - Architecture & Engineering"
+    }
+  },
+
+  
+  "services": {
+    "loading": "Loading",
+    "title": "EXPERTISES",
+    "subtitle": "Tailored solutions that transform your ideas into success",
+    "stats": {
+      "services": "Services",
+      "solutions": "Solutions"
+    },
+    "error": {
+      "title": "Error",
+      "retry": "Retry"
+    },
+    "empty": {
+      "title": "No services",
+      "subtitle": "Our services are coming soon"
+    },
+    "card": {
+      "discover": "Discover",
+      "learnMore": "Learn more"
+    },
+    "benefits": {
+      "quality": "Guaranteed quality",
+      "fast": "Fast delivery",
+      "support": "Dedicated support",
+      "creative": "Unique creativity"
+    },
+    "cta": {
+      "title": "Ready to transform your ideas?",
+      "subtitle": "Let's discuss your project and create something exceptional together",
+      "button": "Start a project"
+    },
+    "modal": {
+      "close": "Close",
+      "description": "Description",
+      "benefits": {
+        "title": "Benefits",
+        "expertise": "Certified professional expertise",
+        "results": "Measurable and guaranteed results",
+        "support": "Dedicated 7/7 support",
+        "pricing": "Competitive and transparent pricing"
+      },
+      "cta": {
+        "title": "Interested in this service?",
+        "subtitle": "Contact us to discuss your project and get a personalized quote",
+        "button": "Request a quote"
+      }
+    }
+  },
+  
   "thonRecipes": {
     "title": "Tuna Recipes",
     "subtitle": "Discover our delicious tuna-based recipes, tasty and easy to prepare",

@@ -534,27 +534,101 @@
   },
   
   
+  "services": {
+    "loading": "Chargement",
+    "title": "EXPERTISES",
+    "subtitle": "Des solutions sur mesure qui transforment vos idées en succès",
+    "stats": {
+      "services": "Services",
+      "solutions": "Solutions"
+    },
+    "error": {
+      "title": "Erreur",
+      "retry": "Réessayer"
+    },
+    "empty": {
+      "title": "Aucun service",
+      "subtitle": "Nos services arrivent bientôt"
+    },
+    "card": {
+      "discover": "Découvrir",
+      "learnMore": "En savoir plus"
+    },
+    "benefits": {
+      "quality": "Qualité garantie",
+      "fast": "Livraison rapide",
+      "support": "Support dédié",
+      "creative": "Créativité unique"
+    },
+    "cta": {
+      "title": "Prêt à transformer vos idées ?",
+      "subtitle": "Discutons de votre projet et créons ensemble quelque chose d'exceptionnel",
+      "button": "Démarrer un projet"
+    },
+    "modal": {
+      "close": "Fermer",
+      "description": "Description",
+      "benefits": {
+        "title": "Avantages",
+        "expertise": "Expertise professionnelle certifiée",
+        "results": "Résultats mesurables et garantis",
+        "support": "Support dédié 7j/7",
+        "pricing": "Tarifs compétitifs et transparents"
+      },
+      "cta": {
+        "title": "Intéressé par ce service ?",
+        "subtitle": "Contactez-nous pour discuter de votre projet et obtenir un devis personnalisé",
+        "button": "Demander un devis"
+      }
+    }
+  },
+
+  
   "missions": {
-    "loading": "Chargement...",
-    "title2": "Découvrez les missions qui façonnent notre vision",
-    "error": "Erreur",
-    "empty": "Aucune mission trouvée",
-    "empty_desc": "Revenez bientôt pour découvrir nos prochaines missions.",
-    "title": "Nos Missions et Valeurs",
-    "published": "Publié le",
-    "our_mission": "Notre Mission",
-    "vision": "Leadership",
-    "objective": "Excellence",
-    "impact": "Succès",
-    "commitments": "Nos Engagements",
-    "commitment_1": "Former les futurs champions",
-    "commitment_2": "Promouvoir l'esprit d'équipe",
-    "commitment_3": "Développer les talents locaux",
-    "commitment_4": "Inspirer la nouvelle génération",
-    "cta_title": "Rejoignez Notre Mission",
-    "cta_text": "Ensemble, construisons l'avenir du basketball.",
-    "contact_us": "Nous Contacter",
-    "join_us": "Nous Rejoindre"
+    "loading": "Chargement",
+    "title": "À PROPOS",
+    "subtitle": "L'excellence architecturale et l'innovation au cœur de notre ADN",
+    "stats": {
+      "sections": "Sections"
+    },
+    "empty": {
+      "title": "Aucune mission disponible",
+      "subtitle": "Le contenu sera bientôt disponible"
+    },
+    "sections": {
+      "history": "Historique",
+      "vision": "Vision & Mission",
+      "organization": "Organisation",
+      "direction": "Message de la Direction"
+    },
+    "cta": {
+      "title": "Une équipe, une culture, l'excellence",
+      "subtitle": "BETCOM AI - Architecture & Ingénierie"
+    }
+  },
+  
+  
+  "missions": {
+    "loading": "Chargement des missions...",
+    "empty": {
+      "title": "Aucune mission disponible",
+      "subtitle": "Les missions seront affichées ici une fois créées."
+    },
+    "title": "Nos Missions",
+    "subtitle": "Découvrez notre ADN et notre vision stratégique",
+    "stats": {
+      "sections": "sections"
+    },
+    "sections": {
+      "history": "Histoire",
+      "vision": "Vision",
+      "organization": "Organisation",
+      "direction": "Direction"
+    },
+    "cta": {
+      "title": "Rejoignez notre aventure",
+      "subtitle": "Faites partie de notre projet et contribuez à nos missions."
+    }
   },
 
   
