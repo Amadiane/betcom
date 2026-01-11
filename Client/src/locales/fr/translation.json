@@ -495,24 +495,43 @@
     "close": "Fermer"
   },
   
+  
   "team": {
-    "title": "Notre Équipe",
-    "title2": "Les talents qui font notre entreprise",
-    "subtitle": "Découvrez les membres qui font battre le cœur du club.",
-    "loading": "Chargement...",
-    "error": "Erreur",
-    "all": "Tous",
-    "players": "Joueurs",
-    "coaches": "Entraîneurs",
-    "staffs": "Staffs",
-    "player": "Joueur",
-    "coach": "Entraîneur",
-    "assistant": "Assistant",
-    "staff": "Staff technique",
-    "manager": "Manager",
-    "no_members": "Aucun membre trouvé"
+    "loading": "Chargement",
+    "header": {
+      "title": "Notre Équipe",
+      "description": "Découvrez les membres qui font battre le cœur du club."
+    },
+    "title": "L'ÉQUIPE",
+    "subtitle": "Les architectes et ingénieurs qui façonnent l'avenir de BETCOM AI",
+    "stats": {
+      "members": "Membres",
+      "leaders": "Dirigeants",
+      "experts": "Experts"
+    },
+    "error": {
+      "title": "Erreur",
+      "retry": "Réessayer"
+    },
+    "noMembers": {
+      "title": "Aucun membre",
+      "subtitle": "L'équipe sera bientôt disponible"
+    },
+    "leadership": {
+      "title": "Direction",
+      "badge": "Dirigeant",
+      "defaultPosition": "Dirigeant"
+    },
+    "members": {
+      "title": "Équipe",
+      "defaultPosition": "Membre de l'équipe"
+    },
+    "cta": {
+      "title": "Rejoignez\nnotre équipe",
+      "description": "Vous souhaitez faire partie de l'aventure BETCOM AI ? Découvrez nos opportunités de carrière.",
+      "button": "Voir nos offres"
+    }
   },
-
   
   
   "missions": {

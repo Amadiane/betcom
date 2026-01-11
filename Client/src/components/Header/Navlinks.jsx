@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Search, Menu, X, ChevronDown, ArrowRight, Building2, Layers, Users, Award, Briefcase, Newspaper, Mail } from "lucide-react";
 import Logo from "./Logo";
 
@@ -11,13 +12,16 @@ import Logo from "./Logo";
  */
 
 const Navlinks = () => {
+  const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [language, setLanguage] = useState("FR");
   const dropdownRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
+
+  // Initialiser la langue depuis i18n
+  const currentLanguage = i18n.language.toUpperCase().substring(0, 2);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,15 +59,20 @@ const Navlinks = () => {
     }, 300);
   };
 
+  // Fonction pour changer la langue
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang.toLowerCase());
+  };
+
   const navItems = [
-    { title: "Accueil", path: "/", icon: Building2 },
-    { title: "À propos", path: "/nosMissions", icon: Users },
-    { title: "Expertises", path: "/services", icon: Layers },
-    { title: "Projets", path: "/projects", icon: Building2 },
-    { title: "Équipe", path: "/notreEquipe", icon: Users },
-    { title: "Actualités", path: "/actualites", icon: Newspaper },
-    // { title: "Carrières", path: "/careers", icon: Briefcase },
-    { title: "Contact", path: "/contact", icon: Mail },
+    { title: t('nav.home'), path: "/", icon: Building2 },
+    { title: t('nav.about'), path: "/nosMissions", icon: Users },
+    { title: t('nav.expertise'), path: "/services", icon: Layers },
+    { title: t('nav.projects'), path: "/projects", icon: Building2 },
+    { title: t('nav.team'), path: "/notreEquipe", icon: Users },
+    { title: t('nav.news'), path: "/actualites", icon: Newspaper },
+    // { title: t('nav.careers'), path: "/careers", icon: Briefcase },
+    { title: t('nav.contact'), path: "/contact", icon: Mail },
   ];
 
   return (
@@ -122,9 +131,9 @@ const Navlinks = () => {
               {/* Language Switcher */}
               <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-full">
                 <button
-                  onClick={() => setLanguage("FR")}
+                  onClick={() => changeLanguage("FR")}
                   className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 ${
-                    language === "FR"
+                    currentLanguage === "FR"
                       ? "bg-[#000000] text-white"
                       : "text-gray-600 hover:text-[#000000]"
                   }`}
@@ -132,9 +141,9 @@ const Navlinks = () => {
                   FR
                 </button>
                 <button
-                  onClick={() => setLanguage("EN")}
+                  onClick={() => changeLanguage("EN")}
                   className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 ${
-                    language === "EN"
+                    currentLanguage === "EN"
                       ? "bg-[#000000] text-white"
                       : "text-gray-600 hover:text-[#000000]"
                   }`}
@@ -147,7 +156,7 @@ const Navlinks = () => {
               <button 
                 onClick={() => setSearchOpen(true)} 
                 className="hidden lg:flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-all duration-300 group"
-                aria-label="Rechercher"
+                aria-label={t('nav.search')}
               >
                 <Search size={18} className="text-gray-600 group-hover:text-[#000000] transition-colors duration-300" />
               </button>
@@ -157,7 +166,7 @@ const Navlinks = () => {
                 to="/contact"
                 className="hidden lg:flex items-center gap-2 px-6 py-2.5 bg-[#000000] text-white text-sm font-semibold rounded-full hover:bg-[#1d1d1b] transition-all duration-300 hover:shadow-lg hover:shadow-black/20"
               >
-                Nous contacter
+                {t('nav.contactUs')}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </NavLink>
 
@@ -225,12 +234,14 @@ const Navlinks = () => {
 
             {/* Language Switcher Mobile */}
             <div className="mt-6 mb-4">
-              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">Langue</p>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">
+                {t('nav.language')}
+              </p>
               <div className="flex items-center gap-3">
                 <button
-                  onClick={() => setLanguage("FR")}
+                  onClick={() => changeLanguage("FR")}
                   className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
-                    language === "FR"
+                    currentLanguage === "FR"
                       ? "bg-[#000000] text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
@@ -238,9 +249,9 @@ const Navlinks = () => {
                   Français
                 </button>
                 <button
-                  onClick={() => setLanguage("EN")}
+                  onClick={() => changeLanguage("EN")}
                   className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
-                    language === "EN"
+                    currentLanguage === "EN"
                       ? "bg-[#000000] text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
@@ -257,7 +268,7 @@ const Navlinks = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-[#000000] text-white text-base font-bold rounded-2xl hover:bg-[#1d1d1b] transition-all duration-300"
               >
-                Nous contacter
+                {t('nav.contactUs')}
                 <ArrowRight size={18} />
               </NavLink>
             </div>
@@ -281,8 +292,8 @@ const Navlinks = () => {
                   <Search size={20} className="text-gray-700" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#000000]">Rechercher</h3>
-                  <p className="text-sm text-gray-500">Parcourez notre contenu</p>
+                  <h3 className="text-lg font-bold text-[#000000]">{t('nav.searchTitle')}</h3>
+                  <p className="text-sm text-gray-500">{t('nav.searchSubtitle')}</p>
                 </div>
               </div>
               
@@ -297,7 +308,7 @@ const Navlinks = () => {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Rechercher des projets, services, actualités..."
+                placeholder={t('nav.searchPlaceholder')}
                 autoFocus
                 className="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#000000] focus:bg-white transition-all duration-300"
               />
@@ -308,7 +319,7 @@ const Navlinks = () => {
             
             <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
               <kbd className="px-3 py-1 bg-gray-100 rounded-lg font-mono text-xs">Enter</kbd>
-              <span>pour rechercher</span>
+              <span>{t('nav.searchHint')}</span>
             </div>
           </div>
         </div>

@@ -88,34 +88,83 @@ class About(models.Model):
 
 
 
+from django.db import models
+from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 class EquipeMember(models.Model):
+
+    ROLE_CHOICES = (
+        ("dirigeant", "Dirigeant"),
+        ("membre", "Membre"),
+    )
+
+    # 🧑 Identité
     full_name = models.CharField(max_length=255)
-    position_fr = models.CharField(max_length=255, verbose_name="Poste (FR)")
-    position_en = models.CharField(max_length=255, verbose_name="Position (EN)", blank=True, null=True)
-    bio_fr = models.TextField(verbose_name="Biographie (FR)", blank=True, null=True)
-    bio_en = models.TextField(verbose_name="Biography (EN)", blank=True, null=True)
-    photo = CloudinaryField('Photo', folder='team', blank=True, null=True)
+
+    # 🏷️ Poste (FR / EN)
+    position_fr = models.CharField(
+        max_length=255,
+        verbose_name="Poste (FR)"
+    )
+    position_en = models.CharField(
+        max_length=255,
+        verbose_name="Position (EN)",
+        blank=True,
+        null=True
+    )
+
+    # 📝 Bio (FR / EN)
+    bio_fr = models.TextField(
+        verbose_name="Biographie (FR)",
+        blank=True,
+        null=True
+    )
+    bio_en = models.TextField(
+        verbose_name="Biography (EN)",
+        blank=True,
+        null=True
+    )
+
+    # 🖼️ Photo (Cloudinary)
+    photo = CloudinaryField(
+        "Photo",
+        folder="team",
+        blank=True,
+        null=True
+    )
+
+    # 🔗 Contacts
     email = models.EmailField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
+
+    # 👑 Rôle dans l’équipe
+    role = models.CharField(
+        max_length=20,
+        choices=ROLE_CHOICES,
+        default="membre"
+    )
+
+    # ⚡ Flag pratique (JSX accepte les deux)
+    is_leader = models.BooleanField(
+        default=False,
+        help_text="Coché si membre dirigeant"
+    )
+
+    # 🔄 État
     is_active = models.BooleanField(default=True)
+
+    # ⏱️ Dates
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Membre d'équipe"
         verbose_name_plural = "Membres d'équipe"
-        ordering = ['full_name']
-
-    @property
-    def display_position(self):
-        lang = translation.get_language() or 'en'
-        if lang.startswith('fr'):
-            return self.position_fr or self.position_en or ""
-        return self.position_en or self.position_fr or ""
+        ordering = ["created_at"]
 
     def __str__(self):
-        return self.full_name
+        return f"{self.full_name} ({self.role})"
 
 
 

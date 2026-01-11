@@ -547,22 +547,42 @@
   },
 
   
+  
   "team": {
-    "title": "Our Team",
-    "title2": "The talents that make our company",
-    "subtitle": "Meet the people who make the heart of the club beat.",
-    "loading": "Loading...",
-    "error": "Error",
-    "all": "All",
-    "players": "Players",
-    "coaches": "Coaches",
-    "staffs": "Staffs",
-    "player": "Player",
-    "coach": "Coach",
-    "assistant": "Assistant",
-    "staff": "Technical Staff",
-    "manager": "Manager",
-    "no_members": "No members found"
+    "loading": "Loading",
+    "header": {
+      "title": "Our Team",
+      "description": "Discover the members who make the heart of BETCOM beat."
+    },
+    "title": "THE TEAM",
+    "subtitle": "The architects and engineers shaping the future of BETCOM AI",
+    "stats": {
+      "members": "Members",
+      "leaders": "Leaders",
+      "experts": "Experts"
+    },
+    "error": {
+      "title": "Error",
+      "retry": "Retry"
+    },
+    "noMembers": {
+      "title": "No members",
+      "subtitle": "The team will be available soon"
+    },
+    "leadership": {
+      "title": "Leadership",
+      "badge": "Leader",
+      "defaultPosition": "Leader"
+    },
+    "members": {
+      "title": "Team",
+      "defaultPosition": "Team member"
+    },
+    "cta": {
+      "title": "Join\nour team",
+      "description": "Want to be part of the BETCOM AI adventure? Discover our career opportunities.",
+      "button": "View our offers"
+    }
   },
 
   
