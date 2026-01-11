@@ -1,65 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Search, Menu, X, ChevronDown, ArrowRight, Building2, Layers, Users, Award, Briefcase, Newspaper, Mail } from "lucide-react";
+import { Search, X, Building2, Layers, Users, Newspaper, ArrowRight } from "lucide-react";
 import Logo from "./Logo";
-
-/**
- * 🏗️ HEADER BETCOM AI - ULTRA MODERN ARCHITECTURE
- * Design inspiré des meilleurs sites d'architecture + design moderne
- * Couleurs: #000000 (noir), #1d1d1b (gris foncé), blanc
- * Minimaliste, épuré, architectural
- */
 
 const Navlinks = () => {
   const { t, i18n } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const dropdownRef = useRef(null);
-  const dropdownTimeoutRef = useRef(null);
 
-  // Initialiser la langue depuis i18n
   const currentLanguage = i18n.language.toUpperCase().substring(0, 2);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setActiveDropdown(null);
-      }
-    };
-
     window.addEventListener("scroll", handleScroll);
-    document.addEventListener("mousedown", handleClickOutside);
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.removeEventListener("mousedown", handleClickOutside);
-      if (dropdownTimeoutRef.current) {
-        clearTimeout(dropdownTimeoutRef.current);
-      }
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMouseEnter = (index) => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
+  // Bloquer scroll body quand menu ouvert
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
-    setActiveDropdown(index);
-  };
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
-  const handleMouseLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 300);
-  };
-
-  // Fonction pour changer la langue
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang.toLowerCase());
   };
@@ -71,285 +43,251 @@ const Navlinks = () => {
     { title: t('nav.projects'), path: "/portfolio", icon: Building2 },
     { title: t('nav.team'), path: "/notreEquipe", icon: Users },
     { title: t('nav.news'), path: "/actualites", icon: Newspaper },
-    // { title: t('nav.careers'), path: "/careers", icon: Briefcase },
-    // { title: t('nav.contact'), path: "/contact", icon: Mail },
   ];
 
   return (
     <>
-      {/* HEADER - Ultra Modern Architecture Style */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled 
-          ? 'bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.08)]' 
-          : 'bg-white'
-      }`}>
-        {/* Top Line - Architectural Detail */}
-        <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#000000] to-transparent transition-opacity duration-700 ${
-          scrolled ? 'opacity-100' : 'opacity-0'
-        }`}></div>
+      {/* HEADER */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
+        }`}
+      >
+        <div className="h-0.5 bg-black"></div>
 
         <div className="max-w-[1800px] mx-auto px-6 lg:px-12">
-          <div className={`flex items-center justify-between transition-all duration-700 ${
-            scrolled ? 'h-16' : 'h-20'
-          }`}>
+          <div className="flex items-center justify-between lg:grid lg:grid-cols-3 h-20">
             
-            {/* LOGO */}
-            <div className="relative z-10 transition-all duration-700">
-              <Logo scrolled={scrolled} />
-            </div>
-
-            {/* MENU DESKTOP - Minimalist Architecture */}
-            <nav className="hidden lg:flex items-center gap-1" ref={dropdownRef}>
-              {navItems.map((item, index) => (
+            {/* LEFT NAV */}
+            <nav className="hidden lg:flex items-center gap-2">
+              {navItems.slice(0, 3).map((item) => (
                 <NavLink
-                  key={index}
+                  key={item.path}
                   to={item.path}
                   className={({ isActive }) =>
-                    `group relative px-5 py-2 text-[13px] font-semibold tracking-wide transition-all duration-500 ${
-                      isActive 
-                        ? "text-[#000000]" 
-                        : "text-gray-600 hover:text-[#000000]"
+                    `px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 ${
+                      isActive ? "text-black" : "text-gray-600 hover:text-black"
                     }`
                   }
+                  style={{ fontFamily: 'Poppins, sans-serif' }}
                 >
-                  {({ isActive }) => (
-                    <>
-                      <span className="relative">
-                        {item.title}
-                        <span className={`absolute -bottom-1 left-0 h-px bg-[#000000] transition-all duration-500 ${
-                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                        }`}></span>
-                      </span>
-                    </>
-                  )}
+                  {item.title}
                 </NavLink>
               ))}
             </nav>
 
-            {/* ACTIONS - Minimalist */}
-            <div className="flex items-center gap-4">
-              {/* Language Switcher */}
-              <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-full">
+            {/* LOGO CENTER */}
+            <div className="flex justify-center">
+              <NavLink to="/">
+                <Logo scrolled={scrolled} />
+              </NavLink>
+            </div>
+
+            {/* RIGHT NAV + ACTIONS */}
+            <div className="hidden lg:flex items-center justify-end gap-6">
+              <nav className="flex items-center gap-2">
+                {navItems.slice(3).map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `px-4 py-2 text-[13px] font-semibold tracking-wide transition-all duration-300 ${
+                        isActive ? "text-black" : "text-gray-600 hover:text-black"
+                      }`
+                    }
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
+                  >
+                    {item.title}
+                  </NavLink>
+                ))}
+              </nav>
+
+              <div className="flex items-center gap-1 px-2 py-1 bg-gray-100 rounded-full">
                 <button
                   onClick={() => changeLanguage("FR")}
-                  className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 ${
-                    currentLanguage === "FR"
-                      ? "bg-[#000000] text-white"
-                      : "text-gray-600 hover:text-[#000000]"
+                  className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${
+                    currentLanguage === "FR" ? "bg-black text-white" : "text-gray-600"
                   }`}
                 >
                   FR
                 </button>
                 <button
                   onClick={() => changeLanguage("EN")}
-                  className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 ${
-                    currentLanguage === "EN"
-                      ? "bg-[#000000] text-white"
-                      : "text-gray-600 hover:text-[#000000]"
+                  className={`px-3 py-1 text-xs font-bold rounded-full transition-all ${
+                    currentLanguage === "EN" ? "bg-black text-white" : "text-gray-600"
                   }`}
                 >
                   EN
                 </button>
               </div>
 
-              {/* Search Button */}
-              <button 
-                onClick={() => setSearchOpen(true)} 
-                className="hidden lg:flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-all duration-300 group"
-                aria-label={t('nav.search')}
+              <button
+                onClick={() => setSearchOpen(true)}
+                className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-all"
               >
-                <Search size={18} className="text-gray-600 group-hover:text-[#000000] transition-colors duration-300" />
+                <Search className="w-5 h-5 text-gray-700" />
               </button>
 
-              {/* Contact CTA */}
               <NavLink
-                to="/contact"
-                className="hidden lg:flex items-center gap-2 px-6 py-2.5 bg-[#000000] text-white text-sm font-semibold rounded-full hover:bg-[#1d1d1b] transition-all duration-300 hover:shadow-lg hover:shadow-black/20"
+                to="/contacternous"
+                className="px-6 py-2.5 bg-black text-white text-sm font-bold rounded-full hover:bg-gray-800 transition-all"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {t('nav.contactUs')}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </NavLink>
-
-              {/* Mobile Menu Button */}
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-all duration-300"
-                aria-label="Menu"
-              >
-                {mobileMenuOpen ? (
-                  <X size={22} className="text-[#000000]" />
-                ) : (
-                  <Menu size={22} className="text-[#000000]" />
-                )}
-              </button>
             </div>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden relative flex items-center justify-center w-11 h-11 rounded-full border-2 border-gray-200 hover:border-black hover:bg-gray-50 transition-all duration-300 group"
+            >
+              <div className="relative w-5 h-5 flex flex-col items-center justify-center">
+                {mobileMenuOpen ? (
+                  <div className="relative w-full h-full">
+                    <span className="absolute top-1/2 left-0 w-full h-0.5 bg-black transform -translate-y-1/2 rotate-45"></span>
+                    <span className="absolute top-1/2 left-0 w-full h-0.5 bg-black transform -translate-y-1/2 -rotate-45"></span>
+                  </div>
+                ) : (
+                  <div className="relative w-full h-full flex flex-col justify-center gap-1.5">
+                    <span className="w-full h-0.5 bg-black transition-all group-hover:w-3/4"></span>
+                    <span className="w-3/4 h-0.5 bg-black transition-all group-hover:w-full ml-auto"></span>
+                  </div>
+                )}
+              </div>
+            </button>
           </div>
         </div>
 
-        {/* Bottom Line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-100"></div>
+        <div className="h-px bg-gray-100"></div>
       </header>
 
-      {/* MENU MOBILE - Full Screen Overlay */}
-      <div className={`fixed inset-0 bg-white z-40 lg:hidden transition-all duration-700 ${
-        mobileMenuOpen 
-          ? 'opacity-100 visible' 
-          : 'opacity-0 invisible'
-      }`}>
-        <div className="h-full overflow-y-auto">
-          <div className="min-h-full flex flex-col px-6 py-20">
-            {/* Mobile Navigation */}
-            <nav className="flex-1 space-y-2">
-              {navItems.map((item, index) => {
+      {/* MENU MOBILE - SIMPLIFIÉ POUR DEBUG */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          {/* Overlay noir */}
+          <div
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+
+          {/* Panel blanc qui slide */}
+          <div className="absolute top-0 right-0 w-full sm:max-w-md h-full bg-white shadow-2xl overflow-hidden animate-in slide-in-from-right duration-300">
+            
+            {/* Header du menu */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <Logo scrolled={false} />
+                <h3 className="text-xl font-bold" style={{ fontFamily: "'Creato Display', sans-serif" }}>
+                  Menu
+                </h3>
+              </div>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Navigation */}
+            <div className="p-6 space-y-2 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 280px)' }}>
+              {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <NavLink
-                    key={index}
+                    key={item.path}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={({ isActive }) => `
-                      group flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300
-                      ${isActive 
-                        ? 'bg-[#000000] text-white' 
-                        : 'text-gray-700 hover:bg-gray-50'
-                      }
-                    `}
+                    className={({ isActive }) =>
+                      `flex items-center gap-4 px-6 py-4 rounded-2xl transition-all ${
+                        isActive ? "bg-black text-white" : "text-gray-700 hover:bg-gray-100"
+                      }`
+                    }
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                          isActive 
-                            ? 'bg-white/20' 
-                            : 'bg-gray-100 group-hover:bg-gray-200'
-                        }`}>
-                          <Icon size={20} className={isActive ? 'text-white' : 'text-gray-700'} />
-                        </div>
-                        <span className="flex-1 text-lg font-bold">{item.title}</span>
-                      </>
-                    )}
+                    <Icon className="w-5 h-5" />
+                    <span className="font-semibold">{item.title}</span>
+                    <ArrowRight className="w-4 h-4 ml-auto opacity-50" />
                   </NavLink>
                 );
               })}
-            </nav>
-
-            {/* Language Switcher Mobile */}
-            <div className="mt-6 mb-4">
-              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">
-                {t('nav.language')}
-              </p>
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => changeLanguage("FR")}
-                  className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
-                    currentLanguage === "FR"
-                      ? "bg-[#000000] text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  Français
-                </button>
-                <button
-                  onClick={() => changeLanguage("EN")}
-                  className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl transition-all duration-300 ${
-                    currentLanguage === "EN"
-                      ? "bg-[#000000] text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  English
-                </button>
-              </div>
             </div>
 
-            {/* Mobile Footer */}
-            <div className="pt-4 border-t border-gray-200">
+            {/* Footer */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200 bg-gray-50 space-y-4">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-3">
+                  {t('nav.language')}
+                </p>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => changeLanguage("FR")}
+                    className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl ${
+                      currentLanguage === "FR" ? "bg-black text-white" : "bg-white text-gray-700"
+                    }`}
+                  >
+                    Français
+                  </button>
+                  <button
+                    onClick={() => changeLanguage("EN")}
+                    className={`flex-1 px-6 py-3 text-sm font-bold rounded-xl ${
+                      currentLanguage === "EN" ? "bg-black text-white" : "bg-white text-gray-700"
+                    }`}
+                  >
+                    English
+                  </button>
+                </div>
+              </div>
+
               <NavLink
-                to="/contact"
+                to="/contacternous"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-[#000000] text-white text-base font-bold rounded-2xl hover:bg-[#1d1d1b] transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-black text-white font-bold rounded-2xl"
+                style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {t('nav.contactUs')}
-                <ArrowRight size={18} />
+                <ArrowRight className="w-5 h-5" />
               </NavLink>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SEARCH MODAL - Minimalist */}
-      {searchOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-xl flex items-start justify-center pt-32 px-4 z-[60] animate-fadeIn"
-          onClick={() => setSearchOpen(false)}
-        >
-          <div 
-            className="w-full max-w-2xl bg-white rounded-3xl p-8 shadow-2xl animate-slideDown"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-                  <Search size={20} className="text-gray-700" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-[#000000]">{t('nav.searchTitle')}</h3>
-                  <p className="text-sm text-gray-500">{t('nav.searchSubtitle')}</p>
-                </div>
-              </div>
-              
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-all duration-300"
-              >
-                <X size={20} className="text-gray-600" />
-              </button>
-            </div>
-            
-            <div className="relative">
-              <input
-                type="text"
-                placeholder={t('nav.searchPlaceholder')}
-                autoFocus
-                className="w-full px-6 py-4 bg-gray-50 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#000000] focus:bg-white transition-all duration-300"
-              />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-xl bg-[#000000] flex items-center justify-center">
-                <Search size={18} className="text-white" />
-              </div>
-            </div>
-            
-            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
-              <kbd className="px-3 py-1 bg-gray-100 rounded-lg font-mono text-xs">Enter</kbd>
-              <span>{t('nav.searchHint')}</span>
             </div>
           </div>
         </div>
       )}
 
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slideDown {
-          from { 
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to { 
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-        
-        .animate-slideDown {
-          animation: slideDown 0.4s ease-out;
-        }
-      `}</style>
+      {/* SEARCH MODAL */}
+      {searchOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-md flex items-start justify-center pt-32 px-4"
+          onClick={() => setSearchOpen(false)}
+        >
+          <div
+            className="w-full max-w-2xl bg-white rounded-3xl p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold" style={{ fontFamily: "'Creato Display', sans-serif" }}>
+                {t('nav.searchTitle')}
+              </h3>
+              <button
+                onClick={() => setSearchOpen(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder={t('nav.searchPlaceholder') || "Rechercher..."}
+                className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 focus:border-black focus:outline-none rounded-2xl"
+                autoFocus
+                style={{ fontFamily: 'Poppins, sans-serif' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
