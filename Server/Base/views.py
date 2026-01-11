@@ -99,3 +99,17 @@ from .serializers import EquipeMemberSerializer
 class EquipeMemberViewSet(viewsets.ModelViewSet):
     queryset = EquipeMember.objects.all()
     serializer_class = EquipeMemberSerializer
+
+
+
+
+# Base/views.py
+from rest_framework.viewsets import ModelViewSet
+from .models import Service
+from .serializers import ServiceSerializer
+
+class ServiceViewSet(ModelViewSet):
+    queryset = Service.objects.all().order_by("-created_at")
+    serializer_class = ServiceSerializer
+
+

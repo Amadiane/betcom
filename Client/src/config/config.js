@@ -24,6 +24,13 @@ const CONFIG = {
   API_TEAM_DELETE: (id) => `${BASE_URL}/api/equipe-members/${id}/`,
 
 
+  
+// 🛠️ SERVICES
+API_SERVICE_LIST: `${BASE_URL}/api/services/`,
+API_SERVICE_CREATE: `${BASE_URL}/api/services/`,
+API_SERVICE_UPDATE: (id) => `${BASE_URL}/api/services/${id}/`,
+API_SERVICE_DELETE: (id) => `${BASE_URL}/api/services/${id}/`,
+
 
 
   // Ajoute à ton CONFIG
@@ -32,8 +39,8 @@ API_TRACK: `${BASE_URL}/api/track/`, // 🔹 endpoint Django pour tracker les ac
 // 📸 Dossier media (pour les images directes)
 MEDIA_URL: `${BASE_URL}/media/`,
 
-CLOUDINARY_NAME: "dwuyq2eoz",
-CLOUDINARY_UPLOAD_PRESET: "default", // 👈 le nom exact de ton preset UNSIGNED
+CLOUDINARY_NAME: "dozdcuv0t",
+CLOUDINARY_UPLOAD_PRESET: "react_unsigned", // 👈 le nom exact de ton preset UNSIGNED
   
 // CLOUDINARY_UPLOAD_PRESET: "ml_default", // 👈 nom exact du preset créé
 };

@@ -117,3 +117,24 @@ class EquipeMember(models.Model):
     def __str__(self):
         return self.full_name
 
+
+
+from django.db import models
+
+class Service(models.Model):
+    title_fr = models.CharField("Titre (FR)", max_length=255)
+    title_en = models.CharField("Title (EN)", max_length=255, blank=True, null=True)
+    description_fr = models.TextField("Description (FR)", blank=True, null=True)
+    description_en = models.TextField("Description (EN)", blank=True, null=True)
+    image = models.URLField("Image", blank=True, null=True)  # Cloudinary URL
+    is_active = models.BooleanField("Actif", default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        # Retourne le titre selon la langue par défaut
+        from django.utils import translation
+        lang = translation.get_language() or 'en'
+        if lang.startswith('fr'):
+            return self.title_fr or self.title_en or ""
+        return self.title_en or self.title_fr or ""

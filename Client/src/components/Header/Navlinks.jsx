@@ -62,7 +62,7 @@ const Navlinks = () => {
     { title: "Projets", path: "/projects", icon: Building2 },
     { title: "Équipe", path: "/notreEquipe", icon: Users },
     { title: "Actualités", path: "/news", icon: Newspaper },
-    { title: "Carrières", path: "/careers", icon: Briefcase },
+    // { title: "Carrières", path: "/careers", icon: Briefcase },
     { title: "Contact", path: "/contact", icon: Mail },
   ];
 
