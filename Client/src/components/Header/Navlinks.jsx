@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { X, Search } from "lucide-react";
 import Logo from "./Logo";
 
 const Navlinks = () => {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const currentLanguage = i18n.language.toUpperCase().substring(0, 2);
+  
+  // Détection page d'accueil
+  const isHomePage = location.pathname === "/" || location.pathname === "/home";
+  
+  // Couleurs conditionnelles
+  const iconColor = isHomePage ? "text-white" : "text-black";
+  const hamburgerBg = isHomePage ? "bg-white" : "bg-black";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,19 +82,21 @@ const Navlinks = () => {
           <div className="flex items-center justify-between h-28">
             
             <NavLink to="/" className="relative z-10">
-              <Logo scrolled={false} />
+              <Logo scrolled={false} logoColor={isHomePage ? "#ffffff" : "#000000"} />
             </NavLink>
 
             <div className="flex items-center gap-6">
               
+              {/* Search Icon - Blanc sur home, noir ailleurs */}
               <button 
-                className={`hidden md:block text-black hover:opacity-70 transition-all ${
+                className={`hidden md:block hover:opacity-70 transition-all ${iconColor} ${
                   menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
               >
                 <Search className="w-7 h-7" strokeWidth={2.5} />
               </button>
 
+              {/* Hamburger - Blanc sur home, noir ailleurs */}
               <button
                 onClick={() => setMenuOpen(true)}
                 className={`group relative z-10 transition-all ${
@@ -95,9 +105,9 @@ const Navlinks = () => {
                 aria-label="Menu"
               >
                 <div className="flex flex-col gap-2">
-                  <span className="w-9 h-[3px] bg-black transition-all group-hover:w-7"></span>
-                  <span className="w-9 h-[3px] bg-black"></span>
-                  <span className="w-9 h-[3px] bg-black transition-all group-hover:w-7"></span>
+                  <span className={`w-9 h-[3px] ${hamburgerBg} transition-all group-hover:w-7`}></span>
+                  <span className={`w-9 h-[3px] ${hamburgerBg}`}></span>
+                  <span className={`w-9 h-[3px] ${hamburgerBg} transition-all group-hover:w-7`}></span>
                 </div>
               </button>
             </div>
