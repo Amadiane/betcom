@@ -119,7 +119,7 @@ const Navlinks = () => {
               </button>
             </div>
 
-            {/* Navigation - Police Inter */}
+            {/* Navigation - Police Inter Bold */}
             <div className="flex-1 pl-8 pr-1 py-6 bg-white">
               <nav>
                 <ul className="space-y-0">
@@ -128,7 +128,7 @@ const Navlinks = () => {
                       <NavLink
                         to={item.path}
                         onClick={() => setMenuOpen(false)}
-                        className="group block py-3.5 text-[22px] sm:text-[24px] font-light text-black transition-all"
+                        className="group block py-3 text-[18px] sm:text-[20px] font-bold text-black transition-all"
                         style={{ 
                           fontFamily: "'Inter', 'Helvetica Neue', -apple-system, sans-serif",
                           letterSpacing: '-0.01em'
@@ -144,23 +144,23 @@ const Navlinks = () => {
               </nav>
             </div>
 
-            {/* Footer - Langues FR/EN */}
+            {/* Footer - Design langue élégant */}
             <div className="pl-8 pr-1 py-5 border-t border-gray-200 bg-white flex-shrink-0">
               <div className="space-y-4">
                 <div>
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <p className="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>
                     Language
                   </p>
-                  <div className="flex gap-2">
+                  <div className="inline-flex bg-gray-100 rounded-full p-1">
                     <button
                       onClick={() => {
                         changeLanguage("FR");
                         setMenuOpen(false);
                       }}
-                      className={`px-6 py-2.5 text-sm font-semibold transition-all ${
+                      className={`px-4 py-1.5 text-xs font-bold rounded-full transition-all ${
                         currentLanguage === "FR"
-                          ? "bg-black text-white"
-                          : "bg-gray-100 text-black hover:bg-gray-200"
+                          ? "bg-black text-white shadow-sm"
+                          : "text-gray-600 hover:text-black"
                       }`}
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
@@ -171,10 +171,10 @@ const Navlinks = () => {
                         changeLanguage("EN");
                         setMenuOpen(false);
                       }}
-                      className={`px-6 py-2.5 text-sm font-semibold transition-all ${
+                      className={`px-4 py-1.5 text-xs font-bold rounded-full transition-all ${
                         currentLanguage === "EN"
-                          ? "bg-black text-white"
-                          : "bg-gray-100 text-black hover:bg-gray-200"
+                          ? "bg-black text-white shadow-sm"
+                          : "text-gray-600 hover:text-black"
                       }`}
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
@@ -184,7 +184,7 @@ const Navlinks = () => {
                 </div>
 
                 <div className="text-center pt-3 border-t border-gray-300">
-                  <p className="text-[10px] text-gray-500 leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <p className="text-[9px] text-gray-500 leading-tight" style={{ fontFamily: "'Inter', sans-serif" }}>
                     © 2026 Betcom AI<br/>Architecture & Ingénierie
                   </p>
                 </div>
