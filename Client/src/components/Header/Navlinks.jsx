@@ -14,21 +14,27 @@ const Navlinks = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      // Récupère le scroll de #root (pas window !)
+      const rootElement = document.getElementById('root');
+      const currentScrollY = rootElement ? rootElement.scrollTop : 0;
       
-      if (currentScrollY < 50) {
+      // Seulement visible quand on est EN HAUT (0-10px)
+      if (currentScrollY < 10) {
         setHeaderVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setHeaderVisible(false);
       } else {
-        setHeaderVisible(true);
+        // Dès qu'on scroll, on cache
+        setHeaderVisible(false);
       }
       
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Écoute le scroll sur #root (pas window !)
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.addEventListener('scroll', handleScroll, { passive: true });
+      return () => rootElement.removeEventListener('scroll', handleScroll);
+    }
   }, [lastScrollY]);
 
   useEffect(() => {
@@ -58,9 +64,9 @@ const Navlinks = () => {
 
   return (
     <>
-      {/* HEADER */}
+      {/* HEADER ABSOLUTE (scroll avec la page) */}
       <header 
-        className={`fixed top-0 left-0 right-0 z-40 transition-transform duration-300 ${
+        className={`absolute top-0 left-0 right-0 z-40 transition-transform duration-300 ${
           headerVisible ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
