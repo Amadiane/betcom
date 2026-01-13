@@ -218,20 +218,93 @@ class News(models.Model):
         return self.title_fr if lang.startswith("fr") else self.title_en or self.title_fr
 
 
-
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
 
-class Portfolio(models.Model):
-    # =========================
-    # TITRE & DESCRIPTION
-    # =========================
-    title_fr = models.CharField(max_length=255, verbose_name="Titre (FR)")
-    title_en = models.CharField(max_length=255, blank=True, null=True, verbose_name="Title (EN)")
+# models.py
+from django.db import models
+from cloudinary.models import CloudinaryField
+from django.utils import timezone
 
-    description_fr = models.TextField(blank=True, verbose_name="Description (FR)")
-    description_en = models.TextField(blank=True, null=True, verbose_name="Description (EN)")
+
+class Portfolio(models.Model):
+
+    # =========================
+    # CATÉGORIES (EN ONLY)
+    # =========================
+    CATEGORY_CHOICES = [
+        ("selected_projects", "Selected Projects"),
+        ("adaptive_transformation", "Adaptive Transformation"),
+        ("advisory_services", "Advisory Services"),
+        ("aviation", "Aviation"),
+        ("branded_environments", "Branded Environments"),
+        ("corporate_commercial", "Corporate and Commercial"),
+        ("cultural_civic", "Cultural and Civic"),
+        ("federal", "Federal"),
+        ("health", "Health"),
+        ("health_education", "Health Education"),
+        ("higher_education", "Higher Education"),
+        ("hospitality", "Hospitality"),
+        ("k12_education", "K-12 Education"),
+        ("landscape_architecture", "Landscape Architecture"),
+        ("residential", "Residential"),
+        ("science_technology", "Science and Technology"),
+        ("sports_entertainment", "Sports, Recreation, and Entertainment"),
+        ("transportation", "Transportation"),
+        ("urban_design", "Urban Design"),
+        ("workplace", "Workplace"),
+    ]
+
+    category = models.CharField(
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Category"
+    )
+
+    # =========================
+    # NOM DU PROJET
+    # =========================
+    project_name_fr = models.CharField(max_length=255, blank=True, null=True)
+    project_name_en = models.CharField(max_length=255, blank=True, null=True)
+
+    # =========================
+    # LOCALISATION
+    # =========================
+    location_fr = models.CharField(max_length=255, blank=True, null=True)
+    location_en = models.CharField(max_length=255, blank=True, null=True)
+
+    # =========================
+    # TITRE DESCRIPTION
+    # =========================
+    description_title_fr = models.CharField(max_length=255, blank=True, null=True)
+    description_title_en = models.CharField(max_length=255, blank=True, null=True)
+
+    # =========================
+    # DESCRIPTION
+    # =========================
+    description_fr = models.TextField(blank=True, null=True)
+    description_en = models.TextField(blank=True, null=True)
+
+    # =========================
+    # CLIENT
+    # =========================
+    client_fr = models.CharField(max_length=255, blank=True, null=True)
+    client_en = models.CharField(max_length=255, blank=True, null=True)
+
+    # =========================
+    # SURFACE
+    # =========================
+    surface_fr = models.CharField(max_length=255, blank=True, null=True)
+    surface_en = models.CharField(max_length=255, blank=True, null=True)
+
+    # =========================
+    # DATE DE RÉALISATION
+    # =========================
+    completion_date_fr = models.CharField(max_length=255, blank=True, null=True)
+    completion_date_en = models.CharField(max_length=255, blank=True, null=True)
 
     # =========================
     # IMAGE PRINCIPALE
@@ -239,7 +312,7 @@ class Portfolio(models.Model):
     cover_photo = CloudinaryField('Cover Photo', folder='portfolio/cover', blank=True, null=True)
 
     # =========================
-    # IMAGES SUPPLÉMENTAIRES (FACULTATIVES)
+    # IMAGES (1 → 20)
     # =========================
     image_1 = CloudinaryField('Image 1', folder='portfolio/images', blank=True, null=True)
     image_2 = CloudinaryField('Image 2', folder='portfolio/images', blank=True, null=True)
@@ -273,4 +346,4 @@ class Portfolio(models.Model):
         ordering = ["-created_at"]
 
     def __str__(self):
-        return self.ti
+        return self.project_name_en or self.project_name_fr or "Portfolio Project"

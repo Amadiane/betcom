@@ -98,35 +98,12 @@ class NewsSerializer(serializers.ModelSerializer):
         return self.title_fr if lang.startswith('fr') else self.title_en or self.title_fr
 
 
-
+# serializers.py
 from rest_framework import serializers
 from .models import Portfolio
 
 class PortfolioSerializer(serializers.ModelSerializer):
-    # === Champs pour recevoir les fichiers uploadés ===
-    cover_photo = serializers.ImageField(required=False, allow_null=True)
-    image_1 = serializers.ImageField(required=False, allow_null=True)
-    image_2 = serializers.ImageField(required=False, allow_null=True)
-    image_3 = serializers.ImageField(required=False, allow_null=True)
-    image_4 = serializers.ImageField(required=False, allow_null=True)
-    image_5 = serializers.ImageField(required=False, allow_null=True)
-    image_6 = serializers.ImageField(required=False, allow_null=True)
-    image_7 = serializers.ImageField(required=False, allow_null=True)
-    image_8 = serializers.ImageField(required=False, allow_null=True)
-    image_9 = serializers.ImageField(required=False, allow_null=True)
-    image_10 = serializers.ImageField(required=False, allow_null=True)
-    image_11 = serializers.ImageField(required=False, allow_null=True)
-    image_12 = serializers.ImageField(required=False, allow_null=True)
-    image_13 = serializers.ImageField(required=False, allow_null=True)
-    image_14 = serializers.ImageField(required=False, allow_null=True)
-    image_15 = serializers.ImageField(required=False, allow_null=True)
-    image_16 = serializers.ImageField(required=False, allow_null=True)
-    image_17 = serializers.ImageField(required=False, allow_null=True)
-    image_18 = serializers.ImageField(required=False, allow_null=True)
-    image_19 = serializers.ImageField(required=False, allow_null=True)
-    image_20 = serializers.ImageField(required=False, allow_null=True)
-
-    # === Champs pour renvoyer les URLs publiques Cloudinary ===
+    # URLs pour Cloudinary
     cover_photo_url = serializers.SerializerMethodField()
     image_1_url = serializers.SerializerMethodField()
     image_2_url = serializers.SerializerMethodField()
@@ -151,9 +128,11 @@ class PortfolioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Portfolio
-        fields = "__all__"
+        fields = "__all__"  # Tous les champs + URLs
 
-    # === Méthodes pour récupérer l'URL de chaque image ===
+    # -------------------------------
+    # Méthodes pour récupérer les URLs
+    # -------------------------------
     def get_cover_photo_url(self, obj):
         return obj.cover_photo.url if obj.cover_photo else None
 
