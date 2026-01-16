@@ -67,7 +67,7 @@ const Navlinks = () => {
     { title: t('nav.projects') || "Projets", path: "/portfolio" },
     { title: t('nav.team') || "Équipe", path: "/notreEquipe" },
     { title: t('nav.news') || "Actualités", path: "/actualites" },
-    { title: t('nav.contactUs') || "Contact", path: "/contacternous" },
+    { title: t('nav.contactUs') || "Contact", path: "/hi" },
   ];
 
   return (
