@@ -106,7 +106,7 @@ const Portfolio = () => {
                   {/* IMAGE DE COUVERTURE - ABSOLUTE FULL WIDTH */}
                   {project.cover_photo_url && (
                     <div 
-                      className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[85vh] bg-gray-100 overflow-hidden cursor-pointer group mb-12"
+                      className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[85vh] bg-gray-100 overflow-hidden cursor-pointer group mb-16"
                       onClick={() => navigate(`/portfolio/${project.id}`)}
                     >
                       <img
@@ -121,35 +121,38 @@ const Portfolio = () => {
                   <div className="px-6 lg:px-16">
                     <div className="max-w-[1600px] mx-auto">
                       
-                      {/* LAYOUT 2 COLONNES */}
+                      {/* TITRE + LOCALISATION EN HAUT */}
+                      <div className="mb-12">
+                        {/* NOM DU PROJET */}
+                        <h2 
+                          className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight cursor-pointer hover:underline"
+                          style={{ fontFamily: "'Creato Display', sans-serif" }}
+                          onClick={() => navigate(`/portfolio/${project.id}`)}
+                        >
+                          {projectName || `Projet ${project.id}`}
+                        </h2>
+                        
+                        {/* LOCALISATION */}
+                        {location && (
+                          <p 
+                            className="text-xl text-gray-600 font-light"
+                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                          >
+                            {location}
+                          </p>
+                        )}
+                      </div>
+                      
+                      {/* LAYOUT 2 COLONNES - DESCRIPTION + INFOS */}
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
                         
-                        {/* COLONNE GAUCHE */}
+                        {/* COLONNE GAUCHE - Description */}
                         <div className="lg:col-span-7">
                           
-                          {/* NOM DU PROJET */}
-                          <h2 
-                            className="text-4xl md:text-5xl font-bold text-black mb-3 leading-tight cursor-pointer hover:underline"
-                            style={{ fontFamily: "'Creato Display', sans-serif" }}
-                            onClick={() => navigate(`/portfolio/${project.id}`)}
-                          >
-                            {projectName || `Projet ${project.id}`}
-                          </h2>
-                          
-                          {/* LOCALISATION */}
-                          {location && (
-                            <p 
-                              className="text-xl text-gray-600 font-light mb-8"
-                              style={{ fontFamily: 'Poppins, sans-serif' }}
-                            >
-                              {location}
-                            </p>
-                          )}
-
                           {/* TITRE DESCRIPTION */}
                           {descriptionTitle && (
                             <h3 
-                              className="text-2xl font-bold text-black mb-4 mt-8"
+                              className="text-2xl font-bold text-black mb-6"
                               style={{ fontFamily: "'Creato Display', sans-serif" }}
                             >
                               {descriptionTitle}
@@ -169,42 +172,46 @@ const Portfolio = () => {
                           )}
                         </div>
 
-                        {/* COLONNE DROITE */}
+                        {/* COLONNE DROITE - Détails */}
                         <div className="lg:col-span-5">
-                          <div className="lg:sticky lg:top-32 space-y-6">
+                          <div className="space-y-6">
                             
+                            {/* Client */}
                             {client && (
                               <div>
-                                <p className="text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
                                   <span className="font-bold text-black">Client: </span>
-                                  <span className="text-gray-700">{client}</span>
+                                  <span className="text-gray-600">{client}</span>
                                 </p>
                               </div>
                             )}
                             
+                            {/* Size */}
                             {surface && (
                               <div>
-                                <p className="text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
                                   <span className="font-bold text-black">Size: </span>
-                                  <span className="text-gray-700">{surface}</span>
+                                  <span className="text-gray-600">{surface}</span>
                                 </p>
                               </div>
                             )}
                             
+                            {/* Completion Date */}
                             {completionDate && (
                               <div>
-                                <p className="text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
                                   <span className="font-bold text-black">Completion Date: </span>
-                                  <span className="text-gray-700">{completionDate}</span>
+                                  <span className="text-gray-600">{completionDate}</span>
                                 </p>
                               </div>
                             )}
 
+                            {/* Category */}
                             {project.category && (
                               <div>
-                                <p className="text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
                                   <span className="font-bold text-black">Category: </span>
-                                  <span className="text-gray-700">
+                                  <span className="text-gray-600">
                                     {project.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                                   </span>
                                 </p>
