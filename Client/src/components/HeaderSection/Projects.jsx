@@ -287,11 +287,11 @@ const Projects = () => {
                       onMouseLeave={() => setHoveredProject(null)}
                     >
                       {/* Image Container - Garde l'aspect ratio de l'image */}
-                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-6 shadow-lg group-hover:shadow-2xl transition-all duration-700 rounded-2xl">
+                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-6 shadow-lg group-hover:shadow-2xl transition-all duration-700">
                         <img
                           src={cover}
                           alt={title}
-                          className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                          className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
                         {/* Overlay gradient on hover */}

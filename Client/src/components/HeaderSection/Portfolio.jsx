@@ -67,12 +67,12 @@ const Portfolio = () => {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Project not found</h2>
+          <h2 className="text-2xl font-bold mb-4">{t('portfolio.not_found') || 'Project not found'}</h2>
           <button 
             onClick={() => navigate('/projects')}
             className="px-6 py-3 bg-black text-white hover:bg-gray-800 transition-colors"
           >
-            Back to Projects
+            {t('portfolio.back_projects') || 'Back to Projects'}
           </button>
         </div>
       </div>
@@ -92,21 +92,23 @@ const Portfolio = () => {
   ).filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white">
 
-      {/* IMAGE DE COUVERTURE - FULL WIDTH */}
+      {/* IMAGE DE COUVERTURE - FULL SCREEN SANS MARGES */}
       {project.cover_photo_url && (
-        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[90vh] bg-gray-100 overflow-hidden mb-16" style={{ maxWidth: '100vw' }}>
+        <div className="relative w-screen h-screen -mx-[50vw] left-1/2 right-1/2">
           <img
             src={project.cover_photo_url}
             alt={projectName}
             className="w-full h-full object-cover"
           />
+          {/* Gradient overlay pour meilleure lisibilité si vous voulez ajouter du texte */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 pointer-events-none"></div>
         </div>
       )}
 
       {/* CONTENU - AVEC PADDING */}
-      <div className="px-6 lg:px-16">
+      <div className="px-6 lg:px-16 py-20">
         <div className="max-w-[1600px] mx-auto">
           
           {/* TITRE + LOCALISATION */}
@@ -160,7 +162,7 @@ const Portfolio = () => {
                 {client && (
                   <div>
                     <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      <span className="font-bold text-black">Client: </span>
+                      <span className="font-bold text-black">{t('portfolio.client') || 'Client'}: </span>
                       <span className="text-gray-600">{client}</span>
                     </p>
                   </div>
@@ -169,7 +171,7 @@ const Portfolio = () => {
                 {surface && (
                   <div>
                     <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      <span className="font-bold text-black">Size: </span>
+                      <span className="font-bold text-black">{t('portfolio.size') || 'Size'}: </span>
                       <span className="text-gray-600">{surface}</span>
                     </p>
                   </div>
@@ -178,7 +180,7 @@ const Portfolio = () => {
                 {completionDate && (
                   <div>
                     <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      <span className="font-bold text-black">Completion Date: </span>
+                      <span className="font-bold text-black">{t('portfolio.completion_date') || 'Completion Date'}: </span>
                       <span className="text-gray-600">{completionDate}</span>
                     </p>
                   </div>
@@ -187,7 +189,7 @@ const Portfolio = () => {
                 {project.category && (
                   <div>
                     <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      <span className="font-bold text-black">Category: </span>
+                      <span className="font-bold text-black">{t('portfolio.category') || 'Category'}: </span>
                       <span className="text-gray-600">
                         {project.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                       </span>
@@ -274,7 +276,7 @@ const Portfolio = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 w-16 h-16 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 hover:scale-110 transition-all duration-300 shadow-2xl z-50 group"
-          aria-label="Retour en haut"
+          aria-label={t('portfolio.scroll_top') || 'Retour en haut'}
         >
           <ArrowUp className="w-7 h-7 group-hover:-translate-y-1 transition-transform duration-300" />
         </button>

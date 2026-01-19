@@ -690,6 +690,17 @@
     "contact": "Contact us",
     "close": "Close"
   },
+  
+  "portfolio": {
+    "not_found": "Project not found",
+    "back_projects": "Back to projects",
+    "back_all": "Back to all projects",
+    "client": "Client",
+    "size": "Size",
+    "completion_date": "Completion date",
+    "category": "Category",
+    "scroll_top": "Scroll to top"
+  },
 
   "categories": {
     "all": "All projects",

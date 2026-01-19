@@ -744,6 +744,16 @@
     "projects_count": "projets"
   },
   
+  "portfolio": {
+    "not_found": "Projet introuvable",
+    "back_projects": "Retour aux projets",
+    "back_all": "Retour à tous les projets",
+    "client": "Client",
+    "size": "Surface",
+    "completion_date": "Date de livraison",
+    "category": "Catégorie",
+    "scroll_top": "Retour en haut"
+  },
   "footer": {
     "tagline": "Architecture, Ingénierie & Innovation - Façonnons l'avenir ensemble",
     "stats": {
