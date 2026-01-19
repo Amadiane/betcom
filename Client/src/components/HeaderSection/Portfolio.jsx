@@ -5,11 +5,12 @@ import { ArrowLeft, ArrowUp } from "lucide-react";
 import CONFIG from "../../config/config.js";
 
 /**
- * 🎨 PORTFOLIO - Page de détail d'UN projet individuel
+ * 🎨 PORTFOLIO - Design ultra moderne avec asymétrie
+ * Images espacées, tailles variées, disposition dynamique
  */
 
 const Portfolio = () => {
-  const { id } = useParams(); // Récupère l'ID depuis l'URL /portfolio/:id
+  const { id } = useParams();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language.toUpperCase().substring(0, 2);
@@ -33,7 +34,6 @@ const Portfolio = () => {
         setProject(data);
       } catch (err) {
         console.error('Fetch error:', err);
-        // Rediriger vers la page projects si le projet n'existe pas
         navigate('/projects');
       } finally {
         setLoading(false);
@@ -92,23 +92,11 @@ const Portfolio = () => {
   ).filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-hidden">
 
-      {/* Bouton Retour vers Projects - Position absolue par-dessus l'image */}
-      {/* <div className="absolute top-8 left-6 lg:left-16 z-10">
-        <button
-          onClick={() => navigate('/projects')}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm text-black font-semibold hover:bg-white transition-all duration-300 shadow-lg"
-          style={{ fontFamily: 'Poppins, sans-serif' }}
-        >
-          <ArrowLeft className="w-5 h-5" />
-          {t('portfolio.back') || 'Back to Projects'}
-        </button>
-      </div> */}
-
-      {/* IMAGE DE COUVERTURE - FULL WIDTH SANS ESPACE */}
+      {/* IMAGE DE COUVERTURE - FULL WIDTH */}
       {project.cover_photo_url && (
-        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[90vh] bg-gray-100 overflow-hidden mb-16">
+        <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[90vh] bg-gray-100 overflow-hidden mb-16" style={{ maxWidth: '100vw' }}>
           <img
             src={project.cover_photo_url}
             alt={projectName}
@@ -141,7 +129,7 @@ const Portfolio = () => {
           </div>
           
           {/* LAYOUT 2 COLONNES - DESCRIPTION + INFOS */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-20">
             
             {/* COLONNE GAUCHE - Description */}
             <div className="lg:col-span-6">
@@ -212,41 +200,56 @@ const Portfolio = () => {
         </div>
       </div>
 
-      {/* 🧱 MASONRY GRID - 2 COLONNES - COINS POINTUS */}
+      {/* 🎨 GALLERY ULTRA MODERNE - Disposition asymétrique variée */}
       {allImages.length > 0 && (
-        <div className="px-6 lg:px-16 mb-16">
-          <div className="max-w-[1600px] mx-auto">
-            <div 
-              className="masonry-container"
-              style={{
-                columnCount: window.innerWidth >= 640 ? 2 : 1,
-                columnGap: '1.5rem',
-              }}
-            >
-              {allImages.map((imageUrl, index) => (
-                <div
-                  key={index}
-                  className="masonry-item"
-                  style={{
-                    breakInside: 'avoid',
-                    marginBottom: '1.5rem',
-                  }}
-                >
-                  <div className="relative overflow-hidden bg-gray-100">
-                    <img
-                      src={imageUrl}
-                      alt={`${projectName} - Image ${index + 1}`}
-                      className="w-full h-auto object-contain"
-                      style={{
-                        display: 'block',
-                        maxWidth: '100%',
-                        height: 'auto',
-                      }}
-                      loading="lazy"
-                    />
+        <div className="px-6 lg:px-16 mb-20">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="space-y-24">
+              {allImages.map((imageUrl, index) => {
+                // Pattern qui se répète tous les 4 images
+                const patterns = [
+                  { width: '65%', align: 'left' },    // Moyenne gauche
+                  { width: '80%', align: 'right' },   // Large droite
+                  { width: '55%', align: 'center' },  // Petite centrée
+                  { width: '90%', align: 'left' },    // Très large gauche
+                ];
+                
+                const pattern = patterns[index % 4];
+                
+                let alignmentClass = '';
+                if (pattern.align === 'left') {
+                  alignmentClass = 'mr-auto';
+                } else if (pattern.align === 'right') {
+                  alignmentClass = 'ml-auto';
+                } else {
+                  alignmentClass = 'mx-auto';
+                }
+                
+                return (
+                  <div
+                    key={index}
+                    className={`relative ${alignmentClass}`}
+                    style={{
+                      width: pattern.width,
+                      maxWidth: '100%',
+                    }}
+                  >
+                    <div className="relative overflow-hidden bg-gray-50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02]">
+                      <img
+                        src={imageUrl}
+                        alt={`${projectName} - Image ${index + 1}`}
+                        className="w-full h-auto object-cover"
+                        style={{
+                          display: 'block',
+                          maxWidth: '100%',
+                          height: 'auto',
+                        }}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -276,15 +279,6 @@ const Portfolio = () => {
           <ArrowUp className="w-7 h-7 group-hover:-translate-y-1 transition-transform duration-300" />
         </button>
       )}
-
-      {/* CSS Masonry responsive intégré */}
-      <style jsx>{`
-        @media (max-width: 639px) {
-          .masonry-container {
-            column-count: 1 !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };
