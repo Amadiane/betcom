@@ -270,9 +270,9 @@ const Projects = () => {
           </div>
         ) : (
           <>
-            {/* Grid View - Toutes les cartes de la même taille */}
+            {/* Masonry Grid View - Images gardent leur aspect ratio */}
             {viewMode === 'grid' && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-12">
+              <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 lg:gap-12 space-y-8 lg:space-y-12">
                 {filteredProjects.map((project) => {
                   const title = getText(project, 'project_name') || `Project ${project.id}`;
                   const location = getText(project, 'location');
@@ -281,18 +281,17 @@ const Projects = () => {
                   return (
                     <div 
                       key={project.id}
-                      className="cursor-pointer group"
+                      className="break-inside-avoid cursor-pointer group mb-8 lg:mb-12"
                       onClick={() => navigate(`/portfolio/${project.id}`)}
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
-                      {/* Image Container - Taille uniforme */}
-                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-6 shadow-lg group-hover:shadow-2xl transition-all duration-700 rounded-2xl" 
-                           style={{ paddingBottom: '75%' }}>
+                      {/* Image Container - Garde l'aspect ratio de l'image */}
+                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-6 shadow-lg group-hover:shadow-2xl transition-all duration-700 rounded-2xl">
                         <img
                           src={cover}
                           alt={title}
-                          className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                          className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                           loading="lazy"
                         />
                         {/* Overlay gradient on hover */}

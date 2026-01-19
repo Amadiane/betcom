@@ -691,6 +691,41 @@
     "close": "Close"
   },
 
+  "categories": {
+    "all": "All projects",
+    "selected_projects": "Selected projects",
+    "adaptive_transformation": "Adaptive transformation",
+    "advisory_services": "Advisory services",
+    "aviation": "Aviation",
+    "branded_environments": "Branded environments",
+    "corporate_commercial": "Corporate & commercial",
+    "cultural_civic": "Cultural & civic",
+    "federal": "Federal",
+    "health": "Healthcare",
+    "health_education": "Health education",
+    "higher_education": "Higher education",
+    "hospitality": "Hospitality",
+    "k12_education": "K–12 education",
+    "landscape_architecture": "Landscape architecture",
+    "residential": "Residential",
+    "science_technology": "Science & technology",
+    "sports_entertainment": "Sports & entertainment",
+    "transportation": "Transportation",
+    "urban_design": "Urban design",
+    "workplace": "Workplace"
+  },
+
+  "projects": {
+    "featured_work": "Featured work",
+    "no_projects": "No projects found",
+    "show_all": "Show all projects",
+    "view_project": "View project",
+    "title": "Title",
+    "location": "Location",
+    "year": "Year",
+    "size": "Size",
+    "projects_count": "projects"
+  },
   
   
   "footer": {

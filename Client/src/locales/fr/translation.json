@@ -708,6 +708,41 @@
     "join_us": "Rejoindre le Club"
   },
   
+  "categories": {
+    "all": "Tous les projets",
+    "selected_projects": "Projets sélectionnés",
+    "adaptive_transformation": "Transformation adaptative",
+    "advisory_services": "Services de conseil",
+    "aviation": "Aviation",
+    "branded_environments": "Environnements de marque",
+    "corporate_commercial": "Corporate et commercial",
+    "cultural_civic": "Culturel et civique",
+    "federal": "Fédéral",
+    "health": "Santé",
+    "health_education": "Éducation à la santé",
+    "higher_education": "Enseignement supérieur",
+    "hospitality": "Hôtellerie",
+    "k12_education": "Éducation primaire et secondaire (K-12)",
+    "landscape_architecture": "Architecture paysagère",
+    "residential": "Résidentiel",
+    "science_technology": "Science et technologie",
+    "sports_entertainment": "Sports et divertissement",
+    "transportation": "Transport",
+    "urban_design": "Design urbain",
+    "workplace": "Espaces de travail"
+  },
+
+  "projects": {
+    "featured_work": "Travaux en vedette",
+    "no_projects": "Aucun projet trouvé",
+    "show_all": "Afficher tous les projets",
+    "view_project": "Voir le projet",
+    "title": "Titre",
+    "location": "Localisation",
+    "year": "Année",
+    "size": "Surface",
+    "projects_count": "projets"
+  },
   
   "footer": {
     "tagline": "Architecture, Ingénierie & Innovation - Façonnons l'avenir ensemble",
