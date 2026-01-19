@@ -23,7 +23,7 @@ import { trackAction } from "../../utils/tracker";
  * Design moderne + Catégories API originales
  */
 
-const Contacternous = () => {
+const hi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
@@ -467,4 +467,4 @@ const Contacternous = () => {
   );
 };
 
-export default Contacternous;
+export default hi;

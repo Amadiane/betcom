@@ -5,7 +5,7 @@ import { Briefcase, ArrowRight, ArrowUp } from "lucide-react";
 import CONFIG from "../../config/config.js";
 
 /**
- * 🎨 PORTFOLIO BETCOM - FULL WIDTH + PROCHE DU MENU
+ * 🎨 PORTFOLIO BETCOM - MASONRY 2 COLONNES - COINS POINTUS
  */
 
 const Portfolio = () => {
@@ -72,10 +72,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Espace du menu */}
-      <div className="h-32"></div>
-
-      {/* Projects List - VRAIMENT SANS PADDING */}
+      {/* Projects List - Image commence directement */}
       <section className="pb-24">
         <div className="space-y-32">
           
@@ -103,10 +100,10 @@ const Portfolio = () => {
               return (
                 <div key={project.id} className="border-b border-gray-200 pb-32">
                   
-                  {/* IMAGE DE COUVERTURE - ABSOLUTE FULL WIDTH */}
+                  {/* IMAGE DE COUVERTURE - PLEINE PAGE AVEC CLASSE */}
                   {project.cover_photo_url && (
                     <div 
-                      className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[85vh] bg-gray-100 overflow-hidden cursor-pointer group mb-16"
+                      className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[90vh] bg-gray-100 overflow-hidden cursor-pointer group mb-16"
                       onClick={() => navigate(`/portfolio/${project.id}`)}
                     >
                       <img
@@ -121,9 +118,8 @@ const Portfolio = () => {
                   <div className="px-6 lg:px-16">
                     <div className="max-w-[1600px] mx-auto">
                       
-                      {/* TITRE + LOCALISATION EN HAUT */}
-                      <div className="mb-12">
-                        {/* NOM DU PROJET */}
+                      {/* TITRE + LOCALISATION */}
+                      <div className="mb-20">
                         <h2 
                           className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight cursor-pointer hover:underline"
                           style={{ fontFamily: "'Creato Display', sans-serif" }}
@@ -132,7 +128,6 @@ const Portfolio = () => {
                           {projectName || `Projet ${project.id}`}
                         </h2>
                         
-                        {/* LOCALISATION */}
                         {location && (
                           <p 
                             className="text-xl text-gray-600 font-light"
@@ -144,12 +139,10 @@ const Portfolio = () => {
                       </div>
                       
                       {/* LAYOUT 2 COLONNES - DESCRIPTION + INFOS */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 mb-16">
                         
                         {/* COLONNE GAUCHE - Description */}
-                        <div className="lg:col-span-7">
-                          
-                          {/* TITRE DESCRIPTION */}
+                        <div className="lg:col-span-6">
                           {descriptionTitle && (
                             <h3 
                               className="text-2xl font-bold text-black mb-6"
@@ -159,7 +152,6 @@ const Portfolio = () => {
                             </h3>
                           )}
                           
-                          {/* DESCRIPTION */}
                           {description && (
                             <div 
                               className="text-base text-gray-700 leading-relaxed space-y-4"
@@ -173,10 +165,8 @@ const Portfolio = () => {
                         </div>
 
                         {/* COLONNE DROITE - Détails */}
-                        <div className="lg:col-span-5">
-                          <div className="space-y-6">
-                            
-                            {/* Client */}
+                        <div className="lg:col-span-6">
+                          <div className="space-y-8 lg:pl-20">
                             {client && (
                               <div>
                                 <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -186,7 +176,6 @@ const Portfolio = () => {
                               </div>
                             )}
                             
-                            {/* Size */}
                             {surface && (
                               <div>
                                 <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -196,7 +185,6 @@ const Portfolio = () => {
                               </div>
                             )}
                             
-                            {/* Completion Date */}
                             {completionDate && (
                               <div>
                                 <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -206,7 +194,6 @@ const Portfolio = () => {
                               </div>
                             )}
 
-                            {/* Category */}
                             {project.category && (
                               <div>
                                 <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -223,61 +210,59 @@ const Portfolio = () => {
                     </div>
                   </div>
 
-                  {/* GRID IMAGES - FULL WIDTH */}
+                  {/* 🧱 MASONRY GRID - 2 COLONNES - COINS POINTUS */}
                   {allImages.length > 0 && (
-                    <div className="space-y-6">
-                      {allImages.map((imageUrl, index) => {
-                        const isWide = index % 3 === 0;
+                    <div className="px-6 lg:px-16">
+                      <div className="max-w-[1600px] mx-auto">
                         
-                        return isWide ? (
-                          // Image pleine largeur - ABSOLUTE FULL WIDTH
-                          <div 
-                            key={index}
-                            className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[60vh] bg-gray-100 overflow-hidden cursor-pointer group"
-                            onClick={() => navigate(`/portfolio/${project.id}`)}
-                          >
-                            <img
-                              src={imageUrl}
-                              alt={`${projectName} - Image ${index + 1}`}
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                          </div>
-                        ) : (
-                          // Deux images côte à côte - AVEC PADDING
-                          index % 3 === 1 && (
-                            <div key={index} className="px-6 lg:px-16">
-                              <div className="max-w-[1600px] mx-auto">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                  <div 
-                                    className="relative aspect-[4/3] bg-gray-100 overflow-hidden cursor-pointer group"
-                                    onClick={() => navigate(`/portfolio/${project.id}`)}
-                                  >
-                                    <img
-                                      src={imageUrl}
-                                      alt={`${projectName} - Image ${index + 1}`}
-                                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                  </div>
-                                  {allImages[index + 1] && (
-                                    <div 
-                                      className="relative aspect-[4/3] bg-gray-100 overflow-hidden cursor-pointer group"
-                                      onClick={() => navigate(`/portfolio/${project.id}`)}
-                                    >
-                                      <img
-                                        src={allImages[index + 1]}
-                                        alt={`${projectName} - Image ${index + 2}`}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                      />
-                                    </div>
-                                  )}
-                                </div>
+                        {/* 
+                          ✅ 2 colonnes sur desktop/tablette
+                          ✅ 1 colonne sur mobile
+                          ✅ Coins pointus (pas de rounded)
+                          ✅ Images gardent leur ratio
+                        */}
+                        <div 
+                          className="masonry-container"
+                          style={{
+                            columnCount: window.innerWidth >= 640 ? 2 : 1,
+                            columnGap: '1.5rem',
+                          }}
+                        >
+                          {allImages.map((imageUrl, index) => (
+                            <div
+                              key={index}
+                              className="masonry-item cursor-pointer group"
+                              style={{
+                                breakInside: 'avoid',
+                                marginBottom: '1.5rem',
+                              }}
+                              onClick={() => navigate(`/portfolio/${project.id}`)}
+                            >
+                              {/* 
+                                ⚠️ COINS POINTUS - Pas de rounded-lg 
+                                Juste overflow-hidden pour effet hover
+                              */}
+                              <div className="relative overflow-hidden bg-gray-100">
+                                <img
+                                  src={imageUrl}
+                                  alt={`${projectName} - Image ${index + 1}`}
+                                  className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                  style={{
+                                    display: 'block',
+                                    maxWidth: '100%',
+                                    height: 'auto',
+                                  }}
+                                  loading="lazy"
+                                />
                               </div>
                             </div>
-                          )
-                        );
-                      })}
+                          ))}
+                        </div>
+
+                      </div>
                     </div>
                   )}
+
                 </div>
               );
             })
@@ -314,16 +299,25 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Scroll to Top */}
+      {/* Scroll to Top Button */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 w-14 h-14 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-all shadow-2xl z-50"
+          className="fixed bottom-8 right-8 w-16 h-16 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 hover:scale-110 transition-all duration-300 shadow-2xl z-50 group"
           aria-label="Retour en haut"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ArrowUp className="w-7 h-7 group-hover:-translate-y-1 transition-transform duration-300" />
         </button>
       )}
+
+      {/* CSS Masonry responsive intégré */}
+      <style jsx>{`
+        @media (max-width: 639px) {
+          .masonry-container {
+            column-count: 1 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
