@@ -39,13 +39,14 @@ import NotreEquipe from './components/HeaderSection/NotreEquipe.jsx';
 import Programs from './components/HeaderSection/Programs.jsx';
 import Community from './components/HeaderSection/Community.jsx';
 import Partner from './components/HeaderSection/Partner.jsx';
-import Plateforms from './components/HeaderSection/Plateforms.jsx';
+import Projects from './components/HeaderSection/Projects.jsx';
 import Videotheque from './components/HeaderSection/Videotheque.jsx';
 import Phototheque from './components/HeaderSection/Phototheque.jsx';
 import Document from './components/HeaderSection/Document.jsx';
 import HomePost from './components/Admin/HomePost.jsx';
 import Actualites from './components/HeaderSection/Actualites.jsx';
 import NousRejoindreHeader from './components/HeaderSection/NousRejoindreHeader.jsx';
+// Projects
 
 // Admin Posts
 import TeamMessage from './components/Admin/TeamPost.jsx';
@@ -105,7 +106,7 @@ const router = createBrowserRouter(
       <Route path="programs" element={<Programs />} />
       <Route path="community" element={<Community />} />
       <Route path="partner" element={<Partner />} />
-      <Route path="plateforms" element={<Plateforms />} />
+      <Route path="projects" element={<Projects />} />
       <Route path="videotheque" element={<Videotheque />} />
       <Route path="phototheque" element={<Phototheque />} />
       <Route path="document" element={<Document />} />
@@ -118,6 +119,8 @@ const router = createBrowserRouter(
       <Route path="thonRecipes" element={<ThonRecipes />} />
       <Route path="services" element={<Services />} />
       <Route path="thonProduct" element={<ThonProduct />} />
+      <Route path="/portfolio/:id" element={<Portfolio />} />
+    
 
       {/* Routes Admin protégées */}
       <Route element={<PrivateRoute />}>
