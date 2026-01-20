@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { X, Search } from "lucide-react";
-import Logo from "./Logo";
 
 const Navlinks = () => {
   const { t, i18n } = useTranslation();
@@ -13,12 +12,18 @@ const Navlinks = () => {
 
   const currentLanguage = i18n.language.toUpperCase().substring(0, 2);
   
-  // Détection page d'accueil
-  const isHomePage = location.pathname === "/" || location.pathname === "/home";
+  // Pages avec menu BLANC (logo + hamburger blancs)
+  const whiteMenuPages = ["/", "/home"];
+  
+  // Détection portfolio (toutes les sous-pages)
+  const isPortfolioPage = location.pathname.startsWith('/portfolio');
+  
+  // Menu BLANC uniquement pour home et portfolio
+  const isWhiteMenu = whiteMenuPages.includes(location.pathname) || isPortfolioPage;
   
   // Couleurs conditionnelles
-  const iconColor = isHomePage ? "text-white" : "text-black";
-  const hamburgerBg = isHomePage ? "bg-white" : "bg-black";
+  const textColor = isWhiteMenu ? "text-white" : "text-black";
+  const hamburgerBg = isWhiteMenu ? "bg-white" : "bg-black";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,22 +86,34 @@ const Navlinks = () => {
         <div className="max-w-[1800px] mx-auto px-6 lg:px-16">
           <div className="flex items-center justify-between h-28">
             
-            <NavLink to="/" className="relative z-10">
-              <Logo scrolled={false} logoColor={isHomePage ? "#ffffff" : "#000000"} />
+            {/* BETCOM AI Logo Text */}
+            <NavLink 
+              to="/" 
+              className={`relative z-10 transition-colors duration-300 ${textColor}`}
+            >
+              <h1 
+                className="text-2xl md:text-3xl font-bold tracking-tight"
+                style={{ 
+                  fontFamily: "'Creato Display', 'Inter', sans-serif",
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                BETCOM AI
+              </h1>
             </NavLink>
 
             <div className="flex items-center gap-6">
               
-              {/* Search Icon - Blanc sur home, noir ailleurs */}
+              {/* Search Icon - Blanc ou noir selon la page */}
               <button 
-                className={`hidden md:block hover:opacity-70 transition-all ${iconColor} ${
+                className={`hidden md:block hover:opacity-70 transition-all ${textColor} ${
                   menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
               >
                 <Search className="w-7 h-7" strokeWidth={2.5} />
               </button>
 
-              {/* Hamburger - Blanc sur home, noir ailleurs */}
+              {/* Hamburger - Blanc ou noir selon la page */}
               <button
                 onClick={() => setMenuOpen(true)}
                 className={`group relative z-10 transition-all ${
