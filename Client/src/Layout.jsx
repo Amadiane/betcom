@@ -96,10 +96,10 @@ const App = () => {
       width: 100% !important;
     }
 
-    /* Scrollbar Betcom */
+    /* Scrollbar Betcom - Gris */
     #root {
       scrollbar-width: thin;
-      scrollbar-color: #1d1d1b #f5f5f5;
+      scrollbar-color: #9ca3af #f5f5f5;
     }
 
     #root::-webkit-scrollbar {
@@ -111,12 +111,12 @@ const App = () => {
     }
 
     #root::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #1d1d1b 0%, #000000 100%);
+      background: #9ca3af;
       border-radius: 4px;
     }
 
     #root::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #2d2d2b 0%, #1d1d1b 100%);
+      background: #6b7280;
     }
 
     html::-webkit-scrollbar,

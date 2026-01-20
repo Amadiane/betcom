@@ -42,7 +42,7 @@ import Partner from './components/HeaderSection/Partner.jsx';
 import Projects from './components/HeaderSection/Projects.jsx';
 import Videotheque from './components/HeaderSection/Videotheque.jsx';
 import Phototheque from './components/HeaderSection/Phototheque.jsx';
-import Document from './components/HeaderSection/Document.jsx';
+import HeroProjects from './components/HeaderSection/HeroProjects.jsx';
 import HomePost from './components/Admin/HomePost.jsx';
 import Actualites from './components/HeaderSection/Actualites.jsx';
 import NousRejoindreHeader from './components/HeaderSection/NousRejoindreHeader.jsx';
@@ -81,6 +81,7 @@ import ThonProduct from './components/HeaderSection/ThonProduct.jsx';
 import ThonProductPost from './components/Admin/ThonProductPost.jsx';
 
 
+
 // ✅ Définition du routeur
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -109,7 +110,7 @@ const router = createBrowserRouter(
       <Route path="projects" element={<Projects />} />
       <Route path="videotheque" element={<Videotheque />} />
       <Route path="phototheque" element={<Phototheque />} />
-      <Route path="document" element={<Document />} />
+      <Route path="heroProjects" element={<HeroProjects />} />
       <Route path="homePost" element={<HomePost />} />
       <Route path="actualites" element={<Actualites />} />
       <Route path="nousRejoindreHeader" element={<NousRejoindreHeader />} />

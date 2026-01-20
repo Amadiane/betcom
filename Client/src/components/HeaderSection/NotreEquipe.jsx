@@ -4,16 +4,21 @@ import { useTranslation } from "react-i18next";
 import CONFIG from "../../config/config.js";
 
 /**
- * 🏗️ ÉQUIPE BETCOM AI - STYLE PATRIARCHE AMÉLIORÉ
- * Photos en noir & blanc → couleur au survol (TOUS LES MEMBRES)
- * Layout minimaliste et épuré
- * Typographie forte et élégante
+ * 🏗️ ÉQUIPE BETCOM AI - CHARTE GRAPHIQUE BETCOM
+ * Police Poppins partout selon la charte
+ * Titre massif comme "Rejoignez notre équipe"
+ * Photos en noir & blanc → couleur au survol
  */
 
 const LoadingSpinner = ({ t }) => (
   <div className="flex flex-col justify-center items-center py-40">
     <div className="w-16 h-16 border-2 border-gray-200 border-t-black rounded-full animate-spin"></div>
-    <span className="text-sm text-gray-400 mt-6 tracking-widest uppercase">{t('team.loading')}</span>
+    <span 
+      className="text-sm text-gray-400 mt-6 tracking-widest uppercase"
+      style={{ fontFamily: "'Poppins', sans-serif" }}
+    >
+      {t('team.loading')}
+    </span>
   </div>
 );
 
@@ -72,16 +77,22 @@ const NotreEquipe = () => {
   return (
     <div className="min-h-screen bg-white">
       
-      {/* Hero Section - Style Patriarche */}
+      {/* Hero Section - Style Betcom avec Poppins */}
       <section className="relative pt-40 pb-24 px-6 lg:px-16 border-b border-black">
         <div className="max-w-[1800px] mx-auto">
           
-          {/* Title */}
+          {/* Title - Taille massive comme "Rejoignez notre équipe" */}
           <div className="mb-20">
-            <h1 className="text-[10vw] md:text-[8vw] lg:text-[120px] font-bold leading-none tracking-tight text-black mb-8">
+            <h1 
+              className="text-[12vw] md:text-[10vw] lg:text-[140px] xl:text-[160px] font-bold leading-none tracking-tight text-black mb-8"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
               {t('team.title')}
             </h1>
-            <p className="text-2xl md:text-3xl text-gray-600 max-w-3xl font-light leading-relaxed">
+            <p 
+              className="text-2xl md:text-3xl text-gray-600 max-w-3xl font-light leading-relaxed"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+            >
               {t('team.subtitle')}
             </p>
           </div>
@@ -89,18 +100,48 @@ const NotreEquipe = () => {
           {/* Stats Line */}
           <div className="flex flex-wrap items-center gap-8 md:gap-16 text-sm uppercase tracking-widest">
             <div>
-              <span className="text-black font-bold text-3xl md:text-4xl">{membres.length}</span>
-              <span className="text-gray-400 ml-3">{t('team.stats.members')}</span>
+              <span 
+                className="text-black font-bold text-3xl md:text-4xl"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {membres.length}
+              </span>
+              <span 
+                className="text-gray-400 ml-3"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.stats.members')}
+              </span>
             </div>
             <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
             <div>
-              <span className="text-black font-bold text-3xl md:text-4xl">{dirigeants.length}</span>
-              <span className="text-gray-400 ml-3">{t('team.stats.leaders')}</span>
+              <span 
+                className="text-black font-bold text-3xl md:text-4xl"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {dirigeants.length}
+              </span>
+              <span 
+                className="text-gray-400 ml-3"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.stats.leaders')}
+              </span>
             </div>
             <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
             <div>
-              <span className="text-black font-bold text-3xl md:text-4xl">{employes.length}</span>
-              <span className="text-gray-400 ml-3">{t('team.stats.experts')}</span>
+              <span 
+                className="text-black font-bold text-3xl md:text-4xl"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {employes.length}
+              </span>
+              <span 
+                className="text-gray-400 ml-3"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.stats.experts')}
+              </span>
             </div>
           </div>
         </div>
@@ -115,11 +156,22 @@ const NotreEquipe = () => {
           {error && !loading && (
             <div className="max-w-2xl mx-auto p-12 border border-red-200 rounded-2xl text-center bg-red-50">
               <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t('team.error.title')}</h3>
-              <p className="text-gray-600 mb-6">{error}</p>
+              <h3 
+                className="text-xl font-bold mb-2"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.error.title')}
+              </h3>
+              <p 
+                className="text-gray-600 mb-6"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {error}
+              </p>
               <button 
                 onClick={() => window.location.reload()} 
                 className="px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {t('team.error.retry')}
               </button>
@@ -129,8 +181,18 @@ const NotreEquipe = () => {
           {!loading && !error && membres.length === 0 && (
             <div className="max-w-2xl mx-auto p-12 border border-gray-200 rounded-2xl text-center">
               <Users className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">{t('team.noMembers.title')}</h3>
-              <p className="text-gray-500">{t('team.noMembers.subtitle')}</p>
+              <h3 
+                className="text-xl font-bold mb-2"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.noMembers.title')}
+              </h3>
+              <p 
+                className="text-gray-500"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
+                {t('team.noMembers.subtitle')}
+              </p>
             </div>
           )}
 
@@ -141,7 +203,10 @@ const NotreEquipe = () => {
                 <div className="mb-32">
                   <div className="mb-16">
                     <div className="flex items-center gap-4 mb-4">
-                      <h2 className="text-5xl md:text-6xl font-bold text-black tracking-tight">
+                      <h2 
+                        className="text-5xl md:text-6xl font-bold text-black tracking-tight"
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
+                      >
                         {t('team.leadership.title')}
                       </h2>
                       <Crown className="w-10 h-10 text-black" />
@@ -183,7 +248,10 @@ const NotreEquipe = () => {
                           }`}>
                             <div className="px-3 py-1.5 bg-black/80 backdrop-blur-sm rounded-full flex items-center gap-2">
                               <Crown className="w-4 h-4 text-white" />
-                              <span className="text-xs font-bold text-white uppercase tracking-wider">
+                              <span 
+                                className="text-xs font-bold text-white uppercase tracking-wider"
+                                style={{ fontFamily: "'Poppins', sans-serif" }}
+                              >
                                 {t('team.leadership.badge')}
                               </span>
                             </div>
@@ -218,14 +286,23 @@ const NotreEquipe = () => {
 
                         {/* Info */}
                         <div>
-                          <h3 className="text-2xl md:text-3xl font-bold text-black mb-2 tracking-tight group-hover:underline underline-offset-4 transition-all">
+                          <h3 
+                            className="text-2xl md:text-3xl font-bold text-black mb-2 tracking-tight group-hover:underline underline-offset-4 transition-all"
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
+                          >
                             {membre.full_name}
                           </h3>
-                          <p className="text-base md:text-lg text-gray-600 font-medium mb-4">
+                          <p 
+                            className="text-base md:text-lg text-gray-600 font-medium mb-4"
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
+                          >
                             {membre.position_fr || t('team.leadership.defaultPosition')}
                           </p>
                           {membre.bio_fr && (
-                            <p className="text-sm md:text-base text-gray-500 leading-relaxed line-clamp-3">
+                            <p 
+                              className="text-sm md:text-base text-gray-500 leading-relaxed line-clamp-3"
+                              style={{ fontFamily: "'Poppins', sans-serif" }}
+                            >
                               {membre.bio_fr}
                             </p>
                           )}
@@ -240,7 +317,10 @@ const NotreEquipe = () => {
               {employes.length > 0 && (
                 <div>
                   <div className="mb-16">
-                    <h2 className="text-5xl md:text-6xl font-bold text-black mb-4 tracking-tight">
+                    <h2 
+                      className="text-5xl md:text-6xl font-bold text-black mb-4 tracking-tight"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                    >
                       {t('team.members.title')}
                     </h2>
                     <div className="w-24 h-1 bg-black"></div>
@@ -285,6 +365,7 @@ const NotreEquipe = () => {
                                 rel="noopener noreferrer"
                                 className="flex-1 py-2 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center gap-2 hover:bg-black hover:text-white transition-all text-sm font-semibold transform hover:scale-105"
                                 onClick={(e) => e.stopPropagation()}
+                                style={{ fontFamily: "'Poppins', sans-serif" }}
                               >
                                 <Linkedin className="w-4 h-4" />
                               </a>
@@ -303,10 +384,16 @@ const NotreEquipe = () => {
 
                         {/* Info */}
                         <div>
-                          <h4 className="text-base md:text-lg font-bold text-black mb-1 truncate group-hover:underline underline-offset-2 transition-all">
+                          <h4 
+                            className="text-base md:text-lg font-bold text-black mb-1 truncate group-hover:underline underline-offset-2 transition-all"
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
+                          >
                             {membre.full_name}
                           </h4>
-                          <p className="text-sm text-gray-600 truncate">
+                          <p 
+                            className="text-sm text-gray-600 truncate"
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
+                          >
                             {membre.position_fr || t('team.members.defaultPosition')}
                           </p>
                         </div>
@@ -325,15 +412,22 @@ const NotreEquipe = () => {
         <section className="relative py-32 px-6 lg:px-16 border-t border-black bg-gray-50">
           <div className="max-w-[1800px] mx-auto">
             <div className="max-w-4xl">
-              <h2 className="text-5xl md:text-7xl font-bold text-black mb-8 tracking-tight leading-tight">
+              <h2 
+                className="text-5xl md:text-7xl font-bold text-black mb-8 tracking-tight leading-tight"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
                 {t('team.cta.title')}
               </h2>
-              <p className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-2xl leading-relaxed">
+              <p 
+                className="text-xl md:text-2xl text-gray-600 mb-12 font-light max-w-2xl leading-relaxed"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
+              >
                 {t('team.cta.description')}
               </p>
               <a
                 href="/services"
                 className="group inline-flex items-center gap-4 text-xl font-bold text-black hover:gap-6 transition-all duration-300"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {t('team.cta.button')}
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
