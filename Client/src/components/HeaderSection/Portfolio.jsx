@@ -114,16 +114,16 @@ const Portfolio = () => {
           {/* TITRE + LOCALISATION */}
           <div className="mb-20">
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight"
-              style={{ fontFamily: "'Creato Display', sans-serif" }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 leading-tight"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               {projectName || `Project ${project.id}`}
             </h1>
             
             {location && (
               <p 
-                className="text-xl text-gray-600 font-light"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
+                className="text-lg text-gray-600 font-light"
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {location}
               </p>
@@ -137,8 +137,8 @@ const Portfolio = () => {
             <div className="lg:col-span-6">
               {descriptionTitle && (
                 <h2 
-                  className="text-2xl font-bold text-black mb-6"
-                  style={{ fontFamily: "'Creato Display', sans-serif" }}
+                  className="text-xl font-bold text-black mb-6"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {descriptionTitle}
                 </h2>
@@ -146,8 +146,8 @@ const Portfolio = () => {
               
               {description && (
                 <div 
-                  className="text-base text-gray-700 leading-relaxed space-y-4"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                  className="text-sm text-gray-700 leading-relaxed space-y-4"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {description.split('\n').map((para, idx) => (
                     para.trim() && <p key={idx}>{para}</p>
@@ -158,10 +158,10 @@ const Portfolio = () => {
 
             {/* COLONNE DROITE - Détails */}
             <div className="lg:col-span-6">
-              <div className="space-y-8 lg:pl-20">
+              <div className="space-y-6 lg:pl-20">
                 {client && (
                   <div>
-                    <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <p className="text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
                       <span className="font-bold text-black">{t('portfolio.client') || 'Client'}: </span>
                       <span className="text-gray-600">{client}</span>
                     </p>
@@ -170,7 +170,7 @@ const Portfolio = () => {
                 
                 {surface && (
                   <div>
-                    <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <p className="text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
                       <span className="font-bold text-black">{t('portfolio.size') || 'Size'}: </span>
                       <span className="text-gray-600">{surface}</span>
                     </p>
@@ -179,7 +179,7 @@ const Portfolio = () => {
                 
                 {completionDate && (
                   <div>
-                    <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <p className="text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
                       <span className="font-bold text-black">{t('portfolio.completion_date') || 'Completion Date'}: </span>
                       <span className="text-gray-600">{completionDate}</span>
                     </p>
@@ -188,7 +188,7 @@ const Portfolio = () => {
 
                 {project.category && (
                   <div>
-                    <p className="text-base" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                    <p className="text-sm" style={{ fontFamily: "'Poppins', sans-serif" }}>
                       <span className="font-bold text-black">{t('portfolio.category') || 'Category'}: </span>
                       <span className="text-gray-600">
                         {project.category.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -262,8 +262,8 @@ const Portfolio = () => {
         <div className="max-w-[1600px] mx-auto text-center">
           <button
             onClick={() => navigate('/projects')}
-            className="inline-flex items-center gap-3 text-lg font-bold text-black hover:gap-4 transition-all duration-300"
-            style={{ fontFamily: 'Poppins, sans-serif' }}
+            className="inline-flex items-center gap-3 text-base font-bold text-black hover:gap-4 transition-all duration-300"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             <ArrowLeft className="w-6 h-6" />
             {t('portfolio.back_all') || 'Back to All Projects'}

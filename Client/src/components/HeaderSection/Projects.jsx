@@ -147,7 +147,7 @@ const Projects = () => {
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="group flex items-center gap-4 px-8 py-4 bg-black text-white hover:bg-gradient-to-r hover:from-black hover:to-gray-800 transition-all duration-500 text-base font-bold min-w-[320px] justify-between shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   <div className="flex items-center gap-3">
                     <Filter className="w-5 h-5" />
@@ -179,7 +179,7 @@ const Projects = () => {
                                 ? 'bg-gradient-to-r from-black to-gray-800 text-white hover:from-gray-800 hover:to-black' 
                                 : 'text-gray-700'
                             }`}
-                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                            style={{ fontFamily: "'Poppins', sans-serif" }}
                           >
                             {getCategoryTranslation(cat.value)}
                           </button>
@@ -192,10 +192,10 @@ const Projects = () => {
 
               {/* Project Count */}
               <div className="hidden lg:flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-50 rounded-full">
-                <span className="text-2xl font-bold text-black" style={{ fontFamily: "'Creato Display', sans-serif" }}>
+                <span className="text-2xl font-bold text-black" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   {filteredProjects.length}
                 </span>
-                <span className="text-sm text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <span className="text-sm text-gray-600" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   {currentLang === 'FR' ? 'projets' : 'projects'}
                 </span>
               </div>
@@ -238,7 +238,7 @@ const Projects = () => {
           <div className="w-32 h-0.5 bg-gradient-to-r from-black to-transparent group-hover:w-40 transition-all duration-500"></div>
           <h2 
             className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent"
-            style={{ fontFamily: "'Creato Display', sans-serif" }}
+            style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             {t('projects.featured_work') || (currentLang === 'FR' ? 'Travaux en vedette' : 'Featured Work')}
           </h2>
@@ -251,17 +251,17 @@ const Projects = () => {
               <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                 <Filter className="w-12 h-12 text-gray-400" />
               </div>
-              <h3 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: "'Creato Display', sans-serif" }}>
+              <h3 className="text-3xl font-bold text-black mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 {t('projects.no_projects') || (currentLang === 'FR' ? 'Aucun projet trouvé' : 'No projects found')}
               </h3>
-              <p className="text-gray-600 mb-8 text-lg" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <p className="text-gray-600 mb-8 text-lg" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 {currentLang === 'FR' ? 'Aucun projet dans' : 'No projects in'}: <strong>{getCategoryLabel(selectedCategory)}</strong>
               </p>
               {selectedCategory !== "all" && (
                 <button 
                   onClick={() => setSelectedCategory("all")}
                   className="px-10 py-4 bg-gradient-to-r from-black to-gray-800 text-white hover:from-gray-800 hover:to-black transition-all duration-300 font-semibold shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {t('projects.show_all') || (currentLang === 'FR' ? 'Afficher tous les projets' : 'Show All Projects')}
                 </button>
@@ -299,7 +299,7 @@ const Projects = () => {
                         
                         {/* Hover info */}
                         <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                          <p className="text-white text-sm font-semibold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                          <p className="text-white text-sm font-semibold" style={{ fontFamily: "'Poppins', sans-serif" }}>
                             {t('projects.view_project') || (currentLang === 'FR' ? 'Voir le projet' : 'View Project')} →
                           </p>
                         </div>
@@ -309,12 +309,12 @@ const Projects = () => {
                       <div className="px-2">
                         <h3 
                           className="text-lg font-bold text-black mb-2 group-hover:text-gray-600 transition-colors duration-300 leading-tight"
-                          style={{ fontFamily: "'Creato Display', sans-serif" }}
+                          style={{ fontFamily: "'Poppins', sans-serif" }}
                         >
                           {title}
                         </h3>
                         {location && (
-                          <p className="text-sm text-gray-500 font-medium" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                          <p className="text-sm text-gray-500 font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>
                             {location}
                           </p>
                         )}
@@ -330,7 +330,7 @@ const Projects = () => {
               <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
                 {/* Table Header */}
                 <div className="grid grid-cols-12 gap-8 pb-6 mb-8 border-b-2 border-black font-bold text-sm uppercase tracking-wider"
-                     style={{ fontFamily: 'Poppins, sans-serif' }}>
+                     style={{ fontFamily: "'Poppins', sans-serif" }}>
                   <div className="col-span-4">{t('projects.title') || (currentLang === 'FR' ? 'Titre' : 'Title')}</div>
                   <div className="col-span-3">{t('projects.location') || (currentLang === 'FR' ? 'Localisation' : 'Location')}</div>
                   <div className="col-span-2">{t('projects.year') || (currentLang === 'FR' ? 'Année' : 'Year')}</div>
@@ -350,7 +350,7 @@ const Projects = () => {
                         key={project.id}
                         className="grid grid-cols-12 gap-8 py-6 border-b border-gray-200/60 cursor-pointer hover:bg-gradient-to-r hover:from-gray-50 hover:to-transparent transition-all duration-300 rounded-lg hover:shadow-md px-4 -mx-4"
                         onClick={() => navigate(`/portfolio/${project.id}`)}
-                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                        style={{ fontFamily: "'Poppins', sans-serif" }}
                       >
                         <div className="col-span-4 font-bold text-black hover:underline text-lg">
                           {title}
