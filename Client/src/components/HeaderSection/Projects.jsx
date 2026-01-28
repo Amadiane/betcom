@@ -272,7 +272,7 @@ const Projects = () => {
           <>
             {/* Masonry Grid View - Images gardent leur aspect ratio */}
             {viewMode === 'grid' && (
-              <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 lg:gap-12 space-y-8 lg:space-y-12">
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-3 lg:gap-4 space-y-3 lg:space-y-4">
                 {filteredProjects.map((project) => {
                   const title = getText(project, 'project_name') || `Project ${project.id}`;
                   const location = getText(project, 'location');
@@ -281,13 +281,13 @@ const Projects = () => {
                   return (
                     <div 
                       key={project.id}
-                      className="break-inside-avoid cursor-pointer group mb-8 lg:mb-12"
+                      className="break-inside-avoid cursor-pointer group mb-3 lg:mb-4"
                       onClick={() => navigate(`/portfolio/${project.id}`)}
                       onMouseEnter={() => setHoveredProject(project.id)}
                       onMouseLeave={() => setHoveredProject(null)}
                     >
                       {/* Image Container - Garde l'aspect ratio de l'image */}
-                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-6 shadow-lg group-hover:shadow-2xl transition-all duration-700">
+                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-2 shadow-lg group-hover:shadow-2xl transition-all duration-700">
                         <img
                           src={cover}
                           alt={title}
