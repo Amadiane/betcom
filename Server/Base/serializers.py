@@ -41,15 +41,12 @@ class AboutSerializer(serializers.ModelSerializer):
 
 
 
-
-
 from rest_framework import serializers
 from .models import EquipeMember
 
-
 class EquipeMemberSerializer(serializers.ModelSerializer):
     photo_url = serializers.SerializerMethodField()
-    display_position = serializers.CharField(read_only=True)
+    cover_image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = EquipeMember
@@ -59,6 +56,12 @@ class EquipeMemberSerializer(serializers.ModelSerializer):
         if obj.photo:
             return obj.photo.url
         return None
+
+    def get_cover_image_url(self, obj):
+        if obj.cover_image:
+            return obj.cover_image.url
+        return None
+
 
 from rest_framework import serializers
 from .models import Service

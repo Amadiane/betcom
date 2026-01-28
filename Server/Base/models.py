@@ -134,6 +134,15 @@ class EquipeMember(models.Model):
         null=True
     )
 
+       # 🖼️ Cover image (Cloudinary)
+    cover_image = CloudinaryField(
+        "Cover Image",
+        folder="team/covers",
+        blank=True,
+        null=True
+    )
+
+
     # 🔗 Contacts
     email = models.EmailField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)

@@ -272,7 +272,7 @@ const Projects = () => {
           <>
             {/* Masonry Grid View - Images gardent leur aspect ratio */}
             {viewMode === 'grid' && (
-              <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 lg:gap-12 space-y-8 lg:space-y-12">
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 lg:gap-12 space-y-8 lg:space-y-12">
                 {filteredProjects.map((project) => {
                   const title = getText(project, 'project_name') || `Project ${project.id}`;
                   const location = getText(project, 'location');
