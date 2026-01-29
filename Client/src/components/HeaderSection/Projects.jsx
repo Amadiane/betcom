@@ -136,7 +136,7 @@ const Projects = () => {
       <div className="h-32"></div>
 
       {/* Header Ultra Moderne avec Glass Morphism */}
-      <div className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200/50">
+      <div className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200/50 ">
         <div className="max-w-[1900px] mx-auto px-6 lg:px-20 py-8">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             
@@ -287,16 +287,22 @@ const Projects = () => {
                       onMouseLeave={() => setHoveredProject(null)}
                     >
                       {/* Image Container - Garde l'aspect ratio de l'image */}
-                      <div className="relative overflow-hidden mb-2 transition-all duration-700">
+                      <div className="relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 mb-2 transition-all duration-700">
                         <img
                           src={cover}
                           alt={title}
-                          className="w-full h-auto object-cover transition-all duration-700"
+                          className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
-                        {/* Overlay gradient on hover - SUPPRIMÉ */}
+                        {/* Overlay gradient on hover */}
+                        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
                         
-                        {/* Hover info - SUPPRIMÉ */}
+                        {/* Hover info */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                          <p className="text-white text-sm font-semibold" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                            {t('projects.view_project') || (currentLang === 'FR' ? 'Voir le projet' : 'View Project')} →
+                          </p>
+                        </div>
                       </div>
 
                       {/* Info */}
